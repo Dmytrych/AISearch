@@ -1,8 +1,13 @@
 import express from "express";
 import * as applicationsController from "./applications-controller.js"
+import {validateBody} from "../../middleware/validation/index.js";
+import {applicationCreateSchema} from "./validation.js";
 
-const router = express.Router()
+export function getApplicationsRouter() {
+    const router = express.Router()
 
-router.get('/', applicationsController.get);
+    router.get('/', applicationsController.get);
+    router.post('/', validateBody(applicationCreateSchema), applicationsController.create)
 
-export default router;
+    return router;
+}

@@ -1,14 +1,16 @@
-import { db } from "../../database/index.js";
-import {tableNames} from "../../database/index.js";
+import {
+    createApplication,
+    findAllApplications
+} from "../../../repositories/applications/applications-repository.js";
 
 export async function get(req, res) {
-    const data = await db.select("*").from(tableNames.applications)
+    const data = await findAllApplications()
 
     res.json(data);
 }
 
 export async function create(req, res) {
-    const data = await db.select("*").from(tableNames.applications)
+    const data = await createApplication(req.body)
 
     res.json(data);
 }

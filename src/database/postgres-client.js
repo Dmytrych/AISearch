@@ -23,13 +23,13 @@ export async function initDbConnection(config) {
         const schema = knex.schema
 
         if (!await schema.hasTable(tableNames.applications)) {
-            schema.createTable(tableNames.applications, (table) => {
+            await schema.createTable(tableNames.applications, (table) => {
                 table.increments('id');
-                table.string('name');
-                table.string('url');
+                table.string('name').notNullable();
+                table.string('url').notNullable();
                 table.text('description');
-                table.timestamps(true);
-                table.integer('rating');
+                table.timestamps(true, true, true);
+                table.integer('rating').defaultTo(0);
             });
         }
 
