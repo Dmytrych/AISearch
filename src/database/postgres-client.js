@@ -33,6 +33,14 @@ export async function initDbConnection(config) {
             });
         }
 
+        if (!await schema.hasTable(tableNames.labels)) {
+            await schema.createTable(tableNames.labels, (table) => {
+                table.increments('id');
+                table.foreign('applicationId').references(`${tableNames.applications}.id`);
+                table.string('name').notNullable();
+            });
+        }
+
         db = knex
     } catch (e) {
         console.error("Database schema creation failed", e);

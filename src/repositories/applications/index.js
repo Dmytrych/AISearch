@@ -1,1 +1,1 @@
-export {createApplication} from "./applications-repository.js";
+export * from "./applications-repository.js";

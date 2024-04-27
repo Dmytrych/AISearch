@@ -14,4 +14,5 @@ export const applicationCreateSchema = Joi.object({
     name: Joi.string().required(),
     url: Joi.string().uri().required(),
     description: Joi.string().max(200),
+    labels: Joi.array().items(Joi.string()).optional()
 });

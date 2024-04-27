@@ -1,10 +1,7 @@
-import {
-    createApplication,
-    findAllApplications
-} from "../../../repositories/applications/applications-repository.js";
+import {createApplication, findApplications} from "../../../lib/applications/index.js";
 
 export async function get(req, res) {
-    const data = await findAllApplications()
+    const data = await findApplications()
 
     res.json(data);
 }

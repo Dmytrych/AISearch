@@ -1,5 +1,5 @@
 import express from "express";
-import * as applicationsController from "./applications-controller.js"
+import * as applicationsController from "./controller.js"
 import {validateBody} from "../../middleware/validation/index.js";
 import {applicationCreateSchema} from "./validation.js";
 

@@ -1,3 +1,4 @@
 export const tableNames = {
-    applications: "applications"
+    applications: "applications",
+    labels: "labels"
 }
