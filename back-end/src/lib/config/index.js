@@ -6,6 +6,7 @@ export function getConfig() {
         PG_HOST: process.env.PG_HOST,
         PG_DATABASE_NAME: process.env.PG_DATABASE_NAME,
         PG_PORT: process.env.PG_PORT,
-        PG_MIGRATIONS_FOLDER: process.env.PG_MIGRATIONS_FOLDER
+        PG_MIGRATIONS_FOLDER: process.env.PG_MIGRATIONS_FOLDER,
+        PORT: process.env.PORT
     }
 }

@@ -13,6 +13,12 @@ const applicationSchema = Joi.object({
 export const applicationCreateSchema = Joi.object({
     name: Joi.string().required(),
     url: Joi.string().uri().required(),
-    description: Joi.string().max(200),
+    subtitle: Joi.string().max(100),
+    description: Joi.string().max(300),
+    labels: Joi.array().items(Joi.string()).optional()
+});
+
+export const findApplicationsQuerySchema = Joi.object({
+    name: Joi.string().optional(),
     labels: Joi.array().items(Joi.string()).optional()
 });

@@ -6,18 +6,6 @@ function labelsTable() {
     return db(tableNames.labels);
 }
 
-export async function createLabel(model) {
-    const { error } = labelCreateSchema.validate(model);
-
-    if (error) {
-        throw new Error('Invalid model given')
-    }
-
-    const [createdModel] = await labelsTable().insert(model).returning('*');
-
-    return createdModel;
-}
-
 export async function createLabels(model) {
     const { error } = Joi.array().items(labelCreateSchema).validate(model);
 
@@ -38,4 +26,12 @@ export async function findApplicationLabels(applicationId) {
 
 export async function findApplicationsLabels(applicationIds) {
     return labelsTable().whereIn('applicationId', applicationIds);
+}
+
+export async function filterLabelsByNames(names) {
+    return labelsTable().whereIn('name', names);
+}
+
+export async function filterLabelsByName(name) {
+    return labelsTable().whereLike('name', `%${name}%`);
 }

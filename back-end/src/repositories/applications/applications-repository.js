@@ -5,8 +5,16 @@ function applicationsTable() {
     return db(tableNames.applications);
 }
 
-export async function findAllApplications() {
-    return await applicationsTable().select('*');
+export async function findAllApplications({ ids, nameFilter }) {
+    let query = applicationsTable();
+    if (ids?.length) {
+        query = query.whereIn('id', ids);
+    }
+    if (nameFilter) {
+        console.log(nameFilter);
+        query = query.andWhereLike('name', `%${nameFilter}%`);
+    }
+    return query.select('*')
 }
 
 export async function findApplication(id) {

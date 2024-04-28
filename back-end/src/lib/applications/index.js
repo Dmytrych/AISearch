@@ -1,9 +1,20 @@
 import {createApplication as createApplicationInDb, findAllApplications} from "../../repositories/applications/index.js";
 import {appendApplicationLabels} from "../labels/index.js";
-import {findApplicationsLabels} from "../../repositories/labels/labels-repository.js";
+import {filterLabelsByNames, findApplicationsLabels} from "../../repositories/labels/labels-repository.js";
 
-export async function findApplicationsWithLabels() {
-    const applications = await findAllApplications()
+export async function findApplicationsWithLabels(filter = {}) {
+    let applicationIdsFilter;
+
+    if (filter.labels?.length) {
+        const foundLabels = await filterLabelsByNames(filter.labels)
+        applicationIdsFilter = foundLabels.map((label) => label.applicationId)
+
+        if (!applicationIdsFilter?.length) {
+            return []
+        }
+    }
+
+    const applications = await findAllApplications({ nameFilter: filter.name, ids: applicationIdsFilter })
 
     if (!applications?.length) {
         return [];

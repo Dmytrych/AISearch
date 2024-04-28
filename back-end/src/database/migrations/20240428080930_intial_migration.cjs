@@ -3,6 +3,7 @@ exports.up = async function(knex) {
         table.increments('id');
         table.string('name').notNullable();
         table.string('url').notNullable();
+        table.text('subtitle');
         table.text('description');
         table.timestamps(true, true, true);
         table.integer('rating').defaultTo(0);
