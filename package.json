@@ -5,7 +5,9 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js",
+    "db:create-migration": "npx knex migrate:make --knexfile knexfile.cjs",
+    "db:migrate": "knex migrate:latest --knexfile knexfile.cjs"
   },
   "author": "",
   "license": "ISC",

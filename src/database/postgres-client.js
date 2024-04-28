@@ -1,5 +1,5 @@
-import createKnex from "knex"
-import {tableNames} from "./table-names.js";
+import initKnex from "knex"
+import knexConfig from "../../knexfile.cjs"
 
 export let db;
 
@@ -8,42 +8,10 @@ export async function initDbConnection(config) {
         throw new Error("Error trying to reinitialize the db context")
     }
 
-    const knex = createKnex({
-        client: 'pg',
-        connection: {
-            user: config.PG_USER,
-            host: config.PG_HOST,
-            database: config.PG_DATABASE_NAME,
-            password: config.PG_PASSWORD,
-            port: config.PG_PORT,
-        }
-    })
-
     try {
-        const schema = knex.schema
-
-        if (!await schema.hasTable(tableNames.applications)) {
-            await schema.createTable(tableNames.applications, (table) => {
-                table.increments('id');
-                table.string('name').notNullable();
-                table.string('url').notNullable();
-                table.text('description');
-                table.timestamps(true, true, true);
-                table.integer('rating').defaultTo(0);
-            });
-        }
-
-        if (!await schema.hasTable(tableNames.labels)) {
-            await schema.createTable(tableNames.labels, (table) => {
-                table.increments('id');
-                table.foreign('applicationId').references(`${tableNames.applications}.id`);
-                table.string('name').notNullable();
-            });
-        }
-
-        db = knex
+        db = initKnex(knexConfig[config.NODE_ENV])
     } catch (e) {
-        console.error("Database schema creation failed", e);
+        console.error("Database creation failed", e);
         throw e;
     }
 }

@@ -35,3 +35,7 @@ export async function deleteLabels(applicationId, labelNames) {
 export async function findApplicationLabels(applicationId) {
     return labelsTable().where({ applicationId });
 }
+
+export async function findApplicationsLabels(applicationIds) {
+    return labelsTable().whereIn('applicationId', applicationIds);
+}

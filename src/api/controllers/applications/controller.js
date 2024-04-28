@@ -1,7 +1,7 @@
-import {createApplication, findApplications} from "../../../lib/applications/index.js";
+import {createApplication, findApplicationsWithLabels} from "../../../lib/applications/index.js";
 
 export async function get(req, res) {
-    const data = await findApplications()
+    const data = await findApplicationsWithLabels()
 
     res.json(data);
 }
