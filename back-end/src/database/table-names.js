@@ -1,4 +1,5 @@
 export const tableNames = {
     applications: "applications",
-    labels: "labels"
+    labels: "labels",
+    images: "images"
 }

@@ -2,13 +2,11 @@ import {createApplication, findApplicationsWithLabels} from "../../../lib/applic
 
 export async function get(req, res) {
     const data = await findApplicationsWithLabels(req.query)
-    throw new Error("asdasd")
-
     res.json(data);
 }
 
 export async function create(req, res) {
-    const data = await createApplication(req.body)
+    const data = await createApplication(req.body, req.file)
 
     res.json(data);
 }

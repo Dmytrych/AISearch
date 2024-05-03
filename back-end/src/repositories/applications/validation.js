@@ -5,4 +5,6 @@ export const applicationCreateSchema = Joi.object({
     url: Joi.string().uri().required(),
     subtitle: Joi.string().max(100),
     description: Joi.string().max(300),
+    imageId: Joi.number().integer().positive().optional(),
+    imageName: Joi.string().optional(),
 });
