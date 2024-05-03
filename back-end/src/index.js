@@ -7,6 +7,7 @@ import {initDbConnection} from "./database/index.js";
 import morgan from "morgan";
 import {initLogger} from "./lib/logging/index.js";
 import {getImagesRouter} from "./api/controllers/images/index.js";
+import {getAuthRouter} from "./api/controllers/auth/index.js";
 
 dotenv.config();
 const config = getConfig();
@@ -23,6 +24,7 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms - 
 
 app.use('/applications', getApplicationsRouter());
 app.use('/images', getImagesRouter())
+app.use('/auth', getAuthRouter(config))
 
 morgan.token('body', (req) => {
     return JSON.stringify(req.body || '');

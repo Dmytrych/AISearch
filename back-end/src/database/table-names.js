@@ -1,5 +1,8 @@
 export const tableNames = {
     applications: "applications",
     labels: "labels",
-    images: "images"
+    images: "images",
+    roles: "roles",
+    users: "users",
+    userRoles: "userRoles"
 }
