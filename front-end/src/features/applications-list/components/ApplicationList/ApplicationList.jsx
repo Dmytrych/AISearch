@@ -24,6 +24,7 @@ export function ApplicationList() {
                 {applications.map((application, index) =>
                     <ApplicationListCard
                         key={index}
+                        imageUrl={application.imageName ? API_ENDPOINTS.image(application.imageName) : null}
                         url={application.url}
                         title={application.name}
                         subtitle={application.subtitle}

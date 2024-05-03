@@ -2,13 +2,13 @@ import {Box, Card, CardContent, CardMedia, Chip, Stack, Typography} from "@mui/m
 import Link from "next/link";
 import {StyledApplicationTitle} from "./ApplicationListCard.styled";
 
-export function ApplicationListCard({ title, subtitle, description, labels, url }) {
+export function ApplicationListCard({ title, subtitle, description, labels, url, imageUrl }) {
     return (
         <Card sx={{ display: 'flex', height: "200px", gap: 1 }}>
             <CardMedia
                 component="img"
                 sx={{ width: 200 }}
-                image="images/img.png"
+                image={imageUrl ?? "images/img.png"}
                 alt="Live from space album cover"
             />
             <CardContent>
