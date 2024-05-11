@@ -195,3 +195,202 @@
     at Object.compare (E:\Projects\Git\AISearch\back-end\node_modules\bcrypt\bcrypt.js:204:25)
     at authenticate (file:///E:/Projects/Git/AISearch/back-end/src/api/controllers/auth/auth-controller.js:33:42)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-05-11T22:06:01.531] [ERROR] app - error: select * where "email" = $1 limit $2 - SELECT * повинен посилатись на таблиці
+    at Parser.parseErrorMessage (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:283:98)
+    at Parser.handlePacket (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:122:29)
+    at Parser.parse (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:35:38)
+    at Socket.<anonymous> (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+    at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+  length: 143,
+  severity: 'ПОМИЛКА',
+  code: '42601',
+  detail: undefined,
+  hint: undefined,
+  position: '8',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_target.c',
+  line: '1315',
+  routine: 'ExpandAllTables'
+}
+[2024-05-11T22:14:44.499] [ERROR] app - TypeError: req.params.has is not a function
+    at saveToLibrary (file:///E:/Projects/Git/AISearch/back-end/src/api/controllers/applications/controller.js:19:21)
+    at newFn (E:\Projects\Git\AISearch\back-end\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (E:\Projects\Git\AISearch\back-end\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Projects\Git\AISearch\back-end\node_modules\express\lib\router\route.js:149:13)
+    at file:///E:/Projects/Git/AISearch/back-end/src/api/middleware/validation/url-params-validation.js:7:9
+    at newFn (E:\Projects\Git\AISearch\back-end\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (E:\Projects\Git\AISearch\back-end\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Projects\Git\AISearch\back-end\node_modules\express\lib\router\route.js:149:13)
+    at file:///E:/Projects/Git/AISearch/back-end/src/api/middleware/auth/index.js:12:9
+    at E:\Projects\Git\AISearch\back-end\node_modules\jsonwebtoken\verify.js:261:12
+[2024-05-11T22:15:31.032] [ERROR] app - Error: Invalid model given 
+    at createUserSave (file:///E:/Projects/Git/AISearch/back-end/src/repositories/userSaves/user-saves-repository.js:8:15)
+    at saveToLibrary (file:///E:/Projects/Git/AISearch/back-end/src/api/controllers/applications/controller.js:29:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-05-11T22:16:17.127] [ERROR] app - Error: Cannot chain .first() on "insert" query
+    at QueryBuilder_PostgreSQL.first (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querybuilder.js:1146:13)
+    at createUserSave (file:///E:/Projects/Git/AISearch/back-end/src/repositories/userSaves/user-saves-repository.js:11:80)
+    at saveToLibrary (file:///E:/Projects/Git/AISearch/back-end/src/api/controllers/applications/controller.js:29:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2024-05-11T22:23:19.424] [ERROR] app - error: insert into "userSaves" ("applicationId", "savedBy") values ($1, $2) returning * - стовпець "savedBy" зв'язку "userSaves" не існує
+    at Parser.parseErrorMessage (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:283:98)
+    at Parser.handlePacket (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:122:29)
+    at Parser.parse (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:35:38)
+    at Socket.<anonymous> (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+    at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+  length: 151,
+  severity: 'ПОМИЛКА',
+  code: '42703',
+  detail: undefined,
+  hint: undefined,
+  position: '43',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_target.c',
+  line: '1057',
+  routine: 'checkInsertTargets'
+}
+[2024-05-11T22:52:02.714] [ERROR] app - ReferenceError: creationModel is not defined
+    at findUserSaves (file:///E:/Projects/Git/AISearch/back-end/src/repositories/userSaves/user-saves-repository.js:16:53)
+    at getLibrary (file:///E:/Projects/Git/AISearch/back-end/src/api/controllers/applications/controller.js:33:24)
+    at newFn (E:\Projects\Git\AISearch\back-end\node_modules\express-async-errors\index.js:16:20)
+    at Layer.handle [as handle_request] (E:\Projects\Git\AISearch\back-end\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Projects\Git\AISearch\back-end\node_modules\express\lib\router\route.js:149:13)
+    at file:///E:/Projects/Git/AISearch/back-end/src/api/middleware/auth/index.js:12:9
+    at E:\Projects\Git\AISearch\back-end\node_modules\jsonwebtoken\verify.js:261:12
+    at getSecret (E:\Projects\Git\AISearch\back-end\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (E:\Projects\Git\AISearch\back-end\node_modules\jsonwebtoken\verify.js:101:10)
+    at authenticateToken (file:///E:/Projects/Git/AISearch/back-end/src/api/middleware/auth/index.js:9:9)
+[2024-05-11T22:52:45.483] [ERROR] app - error: select * from "userSaves" inner join "userSaves" on "applications"."id" = "userSaves"."applicationId" where "savedBy" = $1 - ім'я таблиці "userSaves" вказано більше одного разу
+    at Parser.parseErrorMessage (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:283:98)
+    at Parser.handlePacket (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:122:29)
+    at Parser.parse (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:35:38)
+    at Socket.<anonymous> (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+    at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+  length: 169,
+  severity: 'ПОМИЛКА',
+  code: '42712',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '466',
+  routine: 'checkNameSpaceConflicts'
+}
+[2024-05-11T22:57:21.929] [ERROR] app - error: select "userSaves" as "saves", "applications" as "applicationsAlias" from "userSaves" inner join "saves" on "applicationsAlias"."id" = "saves"."applicationId" where "savedBy" = $1 - відношення "saves" не існує
+    at Parser.parseErrorMessage (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:283:98)
+    at Parser.handlePacket (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:122:29)
+    at Parser.parse (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:35:38)
+    at Socket.<anonymous> (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+    at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+  length: 126,
+  severity: 'ПОМИЛКА',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '98',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1452',
+  routine: 'parserOpenTable'
+}
+[2024-05-11T22:59:04.492] [ERROR] app - error: select "applications" from "userSaves" inner join "userSaves" on "applications"."id" = "userSaves"."applicationId" where "savedBy" = $1 - ім'я таблиці "userSaves" вказано більше одного разу
+    at Parser.parseErrorMessage (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:283:98)
+    at Parser.handlePacket (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:122:29)
+    at Parser.parse (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:35:38)
+    at Socket.<anonymous> (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+    at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+  length: 169,
+  severity: 'ПОМИЛКА',
+  code: '42712',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '466',
+  routine: 'checkNameSpaceConflicts'
+}
+[2024-05-11T23:02:14.892] [ERROR] app - error: select "applications"."" from "userSaves" inner join "applications" on "applications"."id" = "userSaves"."applicationId" where "savedBy" = $1 - пустий ідентифікатор із роздільниками в або поблизу """"
+    at Parser.parseErrorMessage (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:283:98)
+    at Parser.handlePacket (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:122:29)
+    at Parser.parse (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:35:38)
+    at Socket.<anonymous> (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+    at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+  length: 173,
+  severity: 'ПОМИЛКА',
+  code: '42601',
+  detail: undefined,
+  hint: undefined,
+  position: '23',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'scan.l',
+  line: '1245',
+  routine: 'scanner_yyerror'
+}

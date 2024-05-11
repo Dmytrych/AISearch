@@ -6,7 +6,6 @@ exports.up = async function(knex) {
         table.text('subtitle');
         table.text('description');
         table.timestamps(true, true, true);
-        table.integer('rating').defaultTo(0);
     });
 
     await knex.schema.createTable('labels', (table) => {

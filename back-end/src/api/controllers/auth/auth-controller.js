@@ -35,7 +35,7 @@ export async function authenticate(req, res) {
         return res.status(200).json({error: "The password is invalid"});
     }
 
-    const token =  jwt.sign({ user: getUserClientModel(user) }, JWT_SECRET_KEY, { expiresIn: '2h' });
+    const token = jwt.sign({ ...getUserClientModel(user) }, JWT_SECRET_KEY, { expiresIn: '2h' });
 
     res.status(200).json({ token, ...getUserClientModel(user) });
 }

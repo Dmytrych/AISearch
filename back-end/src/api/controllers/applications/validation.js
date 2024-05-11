@@ -22,3 +22,12 @@ export const findApplicationsQuerySchema = Joi.object({
     name: Joi.string().optional(),
     labels: Joi.array().items(Joi.string()).optional()
 });
+
+export const saveToLibraryParamsSchema = Joi.object({
+    id: Joi.number().required(),
+});
+
+export const rateApplicationBodySchema = Joi.object({
+    applicationId: Joi.number().required(),
+    number: Joi.number().min(0).max(5).required(),
+});
