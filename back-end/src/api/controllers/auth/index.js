@@ -6,8 +6,8 @@ import {authenticateSchema, registerUserSchema} from "./validation.js";
 export function getAuthRouter() {
     const router = express.Router()
 
-    router.post('/', validateBody(registerUserSchema), authController.register);
-    router.get('/', validateBody(authenticateSchema), authController.authenticate)
+    router.post('/register', validateBody(registerUserSchema), authController.register);
+    router.get('/login', validateBody(authenticateSchema), authController.authenticate)
 
     return router;
 }

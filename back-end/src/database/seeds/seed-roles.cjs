@@ -1,9 +1,12 @@
+const {hashSync, genSaltSync} = require("bcrypt");
 exports.seed = function(knex) {
-    return knex('roles').del()
+    return knex('users').del()
         .then(function () {
-            return knex('roles').insert([
-                { id: 1, name: 'Admin' },
-                { id: 2, name: 'User' },
-            ]);
+            return knex('users').insert({
+                username: "Dmytro Habaznia",
+                email: "karambolrul@gmail.com",
+                isAdmin: true,
+                passwordHash: hashSync("test", genSaltSync(10))
+            });
         });
 };

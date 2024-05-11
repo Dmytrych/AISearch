@@ -143,3 +143,55 @@
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
     at async register (file:///E:/Projects/Git/AISearch/back-end/src/lib/auth/auth-service.js:20:23)
     at async register (file:///E:/Projects/Git/AISearch/back-end/src/api/controllers/auth/auth-controller.js:4:18)
+[2024-05-11T18:42:27.066] [ERROR] app - error: insert into "users" ("email", "isAdmin", "nickname", "passwordHash") values ($1, $2, $3, $4) returning * - стовпець "isAdmin" зв'язку "users" не існує
+    at Parser.parseErrorMessage (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:283:98)
+    at Parser.handlePacket (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:122:29)
+    at Parser.parse (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:35:38)
+    at Socket.<anonymous> (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+    at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+  length: 147,
+  severity: 'ПОМИЛКА',
+  code: '42703',
+  detail: undefined,
+  hint: undefined,
+  position: '31',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_target.c',
+  line: '1057',
+  routine: 'checkInsertTargets'
+}
+[2024-05-11T18:44:33.760] [ERROR] app - Error: Undefined binding(s) detected when compiling FIRST. Undefined column(s): [email] query: select * from "users" where "email" = ? limit ?
+    at QueryCompiler_PG.toSQL (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querycompiler.js:112:13)
+    at QueryBuilder_PostgreSQL.toSQL (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querybuilder.js:84:44)
+    at ensureConnectionCallback (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\execution\internal\ensure-connection-callback.js:4:30)
+    at Runner.ensureConnection (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\execution\runner.js:318:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Runner.run (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\execution\runner.js:30:19)
+    at async authenticate (file:///E:/Projects/Git/AISearch/back-end/src/api/controllers/auth/auth-controller.js:28:18)
+[2024-05-11T18:45:30.678] [ERROR] app - Error: Undefined binding(s) detected when compiling FIRST. Undefined column(s): [email] query: select * from "users" where "email" = ? limit ?
+    at QueryCompiler_PG.toSQL (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querycompiler.js:112:13)
+    at QueryBuilder_PostgreSQL.toSQL (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querybuilder.js:84:44)
+    at ensureConnectionCallback (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\execution\internal\ensure-connection-callback.js:4:30)
+    at Runner.ensureConnection (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\execution\runner.js:318:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Runner.run (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\execution\runner.js:30:19)
+    at async authenticate (file:///E:/Projects/Git/AISearch/back-end/src/api/controllers/auth/auth-controller.js:28:18)
+[2024-05-11T18:46:08.840] [ERROR] app - Error: data and hash arguments required
+    at Object.compare (E:\Projects\Git\AISearch\back-end\node_modules\bcrypt\bcrypt.js:208:17)
+    at E:\Projects\Git\AISearch\back-end\node_modules\bcrypt\promises.js:29:12
+    at new Promise (<anonymous>)
+    at module.exports.promise (E:\Projects\Git\AISearch\back-end\node_modules\bcrypt\promises.js:20:12)
+    at Object.compare (E:\Projects\Git\AISearch\back-end\node_modules\bcrypt\bcrypt.js:204:25)
+    at authenticate (file:///E:/Projects/Git/AISearch/back-end/src/api/controllers/auth/auth-controller.js:33:42)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
