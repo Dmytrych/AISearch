@@ -11,7 +11,7 @@
     "db:migrate-down": "knex migrate:down --knexfile knexfile.cjs",
     "db:seed": "knex seed:run --knexfile knexfile.cjs"
   },
-  "author": "",
+  "author": "Dmytro Habaznia",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
