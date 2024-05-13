@@ -29,5 +29,14 @@ export const saveToLibraryParamsSchema = Joi.object({
 
 export const rateApplicationBodySchema = Joi.object({
     applicationId: Joi.number().required(),
-    number: Joi.number().min(0).max(5).required(),
+    rating: Joi.number().min(0).max(5).required(),
+    comment: Joi.string().optional(),
+});
+
+export const getApplicationRatesParamsSchema = Joi.object({
+    applicationId: Joi.number().required()
+});
+
+export const getMyApplicationRateParamsSchema = Joi.object({
+    applicationId: Joi.number().required()
 });

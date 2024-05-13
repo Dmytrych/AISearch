@@ -34,3 +34,25 @@ export async function createApplication(model) {
 
     return createdModel;
 }
+
+export async function updateApplicationRating(applicationId, rating) {
+    const [found] = await applicationsTable().where({ id: applicationId });
+
+    if (!found) {
+        return undefined;
+    }
+
+    const newRatedCount = found.ratedCount + 1;
+    const newRating = found?.rating === 0 ? rating : (found.rating * found.ratedCount + rating) / newRatedCount
+
+    const result = await applicationsTable().update({
+        rating: newRating,
+        ratedCount: newRatedCount
+    }).returning('*')
+
+    if (result?.length) {
+        return result[0]
+    }
+
+    return undefined;
+}

@@ -5,13 +5,6 @@ exports.up = function(knex) {
             table.integer('savedBy').references('id').inTable('users');
             table.integer('applicationId').references('id').inTable('applications');
         })
-        .createTable('applicationComments', function (table) {
-            table.increments('id').primary();
-            table.integer('applicationId').notNullable();
-            table.integer('createdBy').notNullable();
-            table.text('content').notNullable();
-            table.timestamps(true, true, true);
-        })
         .createTable('applicationRates', function (table) {
             table.increments('id').primary();
             table.integer('applicationId').notNullable();
@@ -30,7 +23,6 @@ exports.up = function(knex) {
 exports.down = function(knex) {
     return knex.schema
         .dropTable('userSaves')
-        .dropTable('applicationComments')
         .dropTable('applicationRates')
         .alterTable('applications', function(table) {
             table.dropColumn('rating');
