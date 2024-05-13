@@ -35,6 +35,10 @@ export const saveToLibraryParamsSchema = Joi.object({
     id: Joi.number().required(),
 });
 
+export const removeFromLibraryParamsSchema = Joi.object({
+    applicationId: Joi.number().required(),
+});
+
 export const rateApplicationBodySchema = Joi.object({
     applicationId: Joi.number().required(),
     rating: Joi.number().min(0).max(5).required(),

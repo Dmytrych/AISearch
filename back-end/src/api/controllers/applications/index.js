@@ -5,7 +5,7 @@ import {
     applicationCreateSchema, applicationUpdateSchema, deleteApplicationParamsSchema,
     findApplicationsQuerySchema,
     getApplicationRatesParamsSchema, getMyApplicationRateParamsSchema,
-    rateApplicationBodySchema,
+    rateApplicationBodySchema, removeFromLibraryParamsSchema,
     saveToLibraryParamsSchema, updateApplicationParamsSchema
 } from "./validation.js";
 import {validateQuery} from "../../middleware/validation/index.js";
@@ -23,6 +23,7 @@ export function getApplicationsRouter() {
     router.put('/:applicationId', authenticateToken, validateUrlParams(updateApplicationParamsSchema), validateBody(applicationUpdateSchema), applicationsController.update)
     router.post('/library/save/:id', authenticateToken, validateUrlParams(saveToLibraryParamsSchema), applicationsController.saveToLibrary)
     router.get('/library/', authenticateToken, applicationsController.getLibrary)
+    router.delete('/library/:applicationId', authenticateToken, validateUrlParams(removeFromLibraryParamsSchema), applicationsController.removeFromLibrary)
     router.post('/rate/', authenticateToken, validateBody(rateApplicationBodySchema), applicationsController.rateApplication)
     router.get('/rate/get/:applicationId', validateUrlParams(getApplicationRatesParamsSchema), applicationsController.getRatings)
     router.get('/rate/get-my/:applicationId', authenticateToken, validateUrlParams(getMyApplicationRateParamsSchema), applicationsController.getMyRating)

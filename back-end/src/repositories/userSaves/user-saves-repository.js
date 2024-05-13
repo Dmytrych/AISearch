@@ -1,5 +1,6 @@
 import {db, tableNames} from "../../database/index.js";
 import {userSaveCreateSchema} from "./validation.js";
+import {findAndDelete} from "../common.js";
 
 export async function createUserSave(creationModel) {
     const { error } = userSaveCreateSchema.validate(creationModel);
@@ -17,4 +18,8 @@ export async function findUserSaves(filter) {
         .select(`${tableNames.applications}.*`)
         .where(filter)
         .join(tableNames.applications, `${tableNames.applications}.id`, '=', `${tableNames.userSaves}.applicationId`);
+}
+
+export async function deleteUserSave(userId, applicationId) {
+    return findAndDelete(tableNames.userSaves, { savedBy: userId, applicationId });
 }

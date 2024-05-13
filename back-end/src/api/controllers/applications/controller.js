@@ -3,7 +3,7 @@ import {
     findApplicationsWithLabels,
     getApplicationClientModel
 } from "../../../lib/applications/index.js";
-import {createUserSave, findUserSaves} from "../../../repositories/userSaves/index.js";
+import {createUserSave, deleteUserSave, findUserSaves} from "../../../repositories/userSaves/index.js";
 import {
     deleteOneApplication,
     findApplication,
@@ -54,6 +54,12 @@ export async function saveToLibrary(req, res) {
     }
 
     const data = await createUserSave({ savedBy: req.user.id, applicationId: req.params.id })
+
+    res.json(data);
+}
+
+export async function removeFromLibrary(req, res) {
+    const data = await deleteUserSave(req.user.id, req.params.applicationId)
 
     res.json(data);
 }
