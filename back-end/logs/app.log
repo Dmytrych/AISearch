@@ -570,3 +570,99 @@
   line: '2633',
   routine: 'ri_ReportViolation'
 }
+[2024-05-14T01:02:38.967] [ERROR] app - Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update "applications" set "views" = "views" + ? where "id" = ? returning *
+    at QueryCompiler_PG.toSQL (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querycompiler.js:112:13)
+    at QueryBuilder_PostgreSQL.toSQL (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querybuilder.js:84:44)
+    at ensureConnectionCallback (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\execution\internal\ensure-connection-callback.js:4:30)
+    at Runner.ensureConnection (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\execution\runner.js:318:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Runner.run (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\execution\runner.js:30:19)
+    at async addApplicationView (file:///E:/Projects/Git/AISearch/back-end/src/repositories/applications/applications-repository.js:63:20)
+    at async registerView (file:///E:/Projects/Git/AISearch/back-end/src/api/controllers/applications/controller.js:21:18)
+[2024-05-14T01:03:57.582] [ERROR] app - Error: Undefined binding(s) detected when compiling UPDATE. Undefined column(s): [id] query: update "applications" set "views" = "views" + ? where "id" = ?
+    at QueryCompiler_PG.toSQL (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querycompiler.js:112:13)
+    at QueryBuilder_PostgreSQL.toSQL (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querybuilder.js:84:44)
+    at ensureConnectionCallback (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\execution\internal\ensure-connection-callback.js:4:30)
+    at Runner.ensureConnection (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\execution\runner.js:318:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Runner.run (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\execution\runner.js:30:19)
+    at async addApplicationView (file:///E:/Projects/Git/AISearch/back-end/src/repositories/applications/applications-repository.js:63:20)
+    at async registerView (file:///E:/Projects/Git/AISearch/back-end/src/api/controllers/applications/controller.js:21:18)
+[2024-05-14T01:25:23.145] [ERROR] app - Error: Undefined binding(s) detected when compiling WHERE. Undefined column(s): [id] query: where "id" = ? or ("name" ilike ? or "subtitle" ilike ? or "description" ilike ?)
+    at QueryCompiler_PG.toSQL (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querycompiler.js:112:13)
+    at compileCallback (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\formatter\formatterUtils.js:13:19)
+    at rawOrFn (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\formatter\wrappingFormatter.js:225:7)
+    at QueryCompiler_PG.whereWrapped (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querycompiler.js:1095:17)
+    at QueryCompiler_PG.where (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querycompiler.js:584:34)
+    at E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querycompiler.js:135:40
+    at Array.forEach (<anonymous>)
+    at QueryCompiler_PG.select (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querycompiler.js:134:16)
+    at QueryCompiler_PG.toSQL (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querycompiler.js:75:29)
+    at QueryBuilder_PostgreSQL.toSQL (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querybuilder.js:84:44)
+[2024-05-14T01:26:53.336] [ERROR] app - TypeError: The operator "undefined" is not permitted
+    at operator (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\formatter\wrappingFormatter.js:132:11)
+    at QueryCompiler_PG.whereBasic (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querycompiler.js:1068:7)
+    at QueryCompiler_PG.where (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querycompiler.js:584:34)
+    at QueryCompiler_PG.toSQL (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querycompiler.js:75:29)
+    at compileCallback (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\formatter\formatterUtils.js:13:19)
+    at rawOrFn (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\formatter\wrappingFormatter.js:225:7)
+    at QueryCompiler_PG.whereWrapped (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querycompiler.js:1095:17)
+    at QueryCompiler_PG.where (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querycompiler.js:584:34)
+    at E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querycompiler.js:135:40
+    at Array.forEach (<anonymous>)
+[2024-05-14T01:32:09.103] [ERROR] app - error: select * from "applications" where ("id" = $1 or ("name" ilike $2 or "subtitle" ilike $3 or "description" ilike $4)) - неприпустимий синтаксис для типу integer: "{"1"}"
+    at Parser.parseErrorMessage (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:283:98)
+    at Parser.handlePacket (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:122:29)
+    at Parser.parse (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:35:38)
+    at Socket.<anonymous> (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+    at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+  length: 214,
+  severity: 'ПОМИЛКА',
+  code: '22P02',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: "параметр порталу без назви $1 = '...'",
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'numutils.c',
+  line: '620',
+  routine: 'pg_strtoint32_safe'
+}
+[2024-05-14T01:33:36.970] [ERROR] app - error: select * from "applications" where ("id" = $1) - неприпустимий синтаксис для типу integer: "{"1"}"
+    at Parser.parseErrorMessage (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:283:98)
+    at Parser.handlePacket (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:122:29)
+    at Parser.parse (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\parser.js:35:38)
+    at Socket.<anonymous> (E:\Projects\Git\AISearch\back-end\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+    at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+  length: 214,
+  severity: 'ПОМИЛКА',
+  code: '22P02',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: "параметр порталу без назви $1 = '...'",
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'numutils.c',
+  line: '620',
+  routine: 'pg_strtoint32_safe'
+}

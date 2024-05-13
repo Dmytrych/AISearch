@@ -1,22 +1,21 @@
 import {db, tableNames} from "../../database/index.js";
 import {applicationCreateSchema} from "./validation.js";
-import {findAndDelete} from "../common.js";
+import {findAndDelete, findItems} from "../common.js";
 import {deleteApplicationLabels} from "../labels/labels-repository.js";
 
 function applicationsTable() {
     return db(tableNames.applications);
 }
 
-export async function findAllApplications({ ids, nameFilter }) {
-    let query = applicationsTable();
-    if (ids?.length) {
-        query = query.whereIn('id', ids);
-    }
-    if (nameFilter) {
-        console.log(nameFilter);
-        query = query.andWhereLike('name', `%${nameFilter}%`);
-    }
-    return query.select('*')
+export async function filterByName(substring) {
+    return applicationsTable()
+        .where('name', 'ilike', `%${substring}%`)
+        .orWhere('subtitle', 'ilike', `%${substring}%`)
+        .orWhere('description', 'ilike', `%${substring}%`);
+}
+
+export async function findAllApplications(filtering) {
+    return findItems(tableNames.applications, filtering)
 }
 
 export async function findApplication(id) {
@@ -51,6 +50,26 @@ export async function updateApplicationRating(applicationId, rating) {
         rating: newRating,
         ratedCount: newRatedCount
     }).returning('*')
+
+    if (result?.length) {
+        return result[0]
+    }
+
+    return undefined;
+}
+
+export async function addApplicationView(applicationId) {
+    const result = await applicationsTable().where({ id: applicationId }).increment('views', 1)
+
+    if (result?.length) {
+        return result[0]
+    }
+
+    return undefined;
+}
+
+export async function addApplicationSave(applicationId) {
+    const result = await applicationsTable().where({ id: applicationId }).increment('saves', 1)
 
     if (result?.length) {
         return result[0]

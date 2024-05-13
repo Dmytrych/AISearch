@@ -5,6 +5,7 @@ import {
 } from "../../../lib/applications/index.js";
 import {createUserSave, deleteUserSave, findUserSaves} from "../../../repositories/userSaves/index.js";
 import {
+    addApplicationSave, addApplicationView,
     deleteOneApplication,
     findApplication,
     updateApplication,
@@ -15,6 +16,11 @@ import {
     getApplicationsRates, getMyApplicationsRates
 } from "../../../repositories/applicationRates/index.js";
 import {updateLabels} from "../../../lib/labels/index.js";
+
+export async function registerView(req, res) {
+    const data = await addApplicationView(req.params.applicationId)
+    res.json(data);
+}
 
 export async function get(req, res) {
     const data = await findApplicationsWithLabels(req.query)
@@ -43,16 +49,21 @@ export async function update(req, res) {
 }
 
 export async function saveToLibrary(req, res) {
-    if (!req.params.id) {
-        res.status("400");
-    }
-
     const application = await findApplication(req.params.id)
 
     if (!application) {
-        res.status("400");
+        res.status(400);
+        return;
     }
 
+    const savedApplications = await findUserSaves({ applicationId: req.params.id })
+
+    if (savedApplications.length) {
+        res.status(400).json({ error: "The application is already saved" });
+        return;
+    }
+
+    await addApplicationSave(req.params.id)
     const data = await createUserSave({ savedBy: req.user.id, applicationId: req.params.id })
 
     res.json(data);

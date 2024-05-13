@@ -2,7 +2,7 @@ import express from "express";
 import * as applicationsController from "./controller.js"
 import {validateBody, validateUrlParams} from "../../middleware/validation/index.js";
 import {
-    applicationCreateSchema, applicationUpdateSchema, deleteApplicationParamsSchema,
+    applicationCreateSchema, applicationUpdateSchema, applicationViewParamsSchema, deleteApplicationParamsSchema,
     findApplicationsQuerySchema,
     getApplicationRatesParamsSchema, getMyApplicationRateParamsSchema,
     rateApplicationBodySchema, removeFromLibraryParamsSchema,
@@ -17,6 +17,7 @@ export function getApplicationsRouter() {
     const router = express.Router()
     const upload = multer()
 
+    router.post('/register-view/:applicationId', validateUrlParams(applicationViewParamsSchema), applicationsController.registerView);
     router.get('/', validateQuery(findApplicationsQuerySchema), applicationsController.get);
     router.post('/', authenticateToken, upload.single('image'), validateBody(applicationCreateSchema), applicationsController.create)
     router.delete('/:applicationId', authenticateToken, validateUrlParams(deleteApplicationParamsSchema), applicationsController.deleteApplication)

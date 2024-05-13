@@ -22,7 +22,20 @@ export async function findApplicationsWithLabels(filter = {}) {
         }
     }
 
-    const applications = await findAllApplications({ nameFilter: filter.name, ids: applicationIdsFilter })
+    const nameFilter = !filter.name ? undefined : (query) => query
+        .where('name', 'ilike', `%${filter.name}%`)
+        .orWhere('subtitle', 'ilike', `%${filter.name}%`)
+        .orWhere('description', 'ilike', `%${filter.name}%`)
+    const applications = await findAllApplications((query) => {
+        let executedQuery = query
+        if (applicationIdsFilter) {
+            executedQuery = query.whereIn('id', applicationIdsFilter)
+        }
+        if (nameFilter) {
+            executedQuery = query.orWhere(nameFilter)
+        }
+        return query
+    })
 
     if (!applications?.length) {
         return [];

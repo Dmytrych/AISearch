@@ -57,6 +57,10 @@ export const getApplicationRatesParamsSchema = Joi.object({
     applicationId: Joi.number().required()
 });
 
+export const applicationViewParamsSchema = Joi.object({
+    applicationId: Joi.number().required()
+});
+
 export const getMyApplicationRateParamsSchema = Joi.object({
     applicationId: Joi.number().required()
 });

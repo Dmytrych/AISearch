@@ -34,7 +34,11 @@ export async function findApplicationsLabels(applicationIds) {
 }
 
 export async function filterLabelsByNames(names) {
-    return labelsTable().whereIn('name', names);
+    return labelsTable().where((query) => {
+        names.forEach(substring => {
+            query.where('name', 'ilike', `%${substring}%`);
+        });
+    });
 }
 
 export async function filterLabelsByName(name) {
