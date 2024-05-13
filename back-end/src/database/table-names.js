@@ -4,6 +4,5 @@ export const tableNames = {
     images: "images",
     users: "users",
     userSaves: "userSaves",
-    applicationComments: "applicationComments",
     applicationRates: "applicationRates",
 }

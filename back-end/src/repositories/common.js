@@ -14,6 +14,12 @@ export async function findOne(tableName, query) {
         });
 }
 
+export async function findAndDelete(tableName, query) {
+    return db(tableName).where(query).delete()
+        .then((result) => {
+            return !!result
+        });
+}
 
 export async function createItem(tableName, model, validationSchema) {
     const { error } = validationSchema.validate(model);

@@ -1,4 +1,4 @@
-import {createUser, getUserByEmail} from "../../../repositories/users/index.js";
+import {createUser, getUser, getUserByEmail, updateUser} from "../../../repositories/users/index.js";
 import bcrypt, {genSaltSync, hashSync} from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -13,6 +13,13 @@ export function getUserClientModel(user) {
 }
 
 export async function register(req, res) {
+    const existingUser = await getUserByEmail(req.body.email)
+
+    if (existingUser) {
+        res.json({ error: "User with such email already exists" });
+        return;
+    }
+
     const { password, ...userData } = req.body
     const passwordHash = hashSync(password, genSaltSync(2))
 
@@ -20,6 +27,19 @@ export async function register(req, res) {
         ...userData,
         passwordHash
     })
+
+    const userClientModel = getUserClientModel(user);
+    res.json(userClientModel);
+}
+
+export async function getProfile(req, res) {
+    const user = await getUser(req.user.id);
+    const userClientModel = getUserClientModel(user);
+    res.json(userClientModel);
+}
+
+export async function updateProfile(req, res) {
+    const user = await updateUser(req.user.id, req.body);
     const userClientModel = getUserClientModel(user);
     res.json(userClientModel);
 }

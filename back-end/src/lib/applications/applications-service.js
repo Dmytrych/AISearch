@@ -3,7 +3,7 @@ import {appendApplicationLabels} from "../labels/index.js";
 import {filterLabelsByNames, findApplicationsLabels} from "../../repositories/labels/labels-repository.js";
 import {createImage} from "../images/index.js";
 
-function getApplicationClientModel(application, labels = []) {
+export function getApplicationClientModel(application, labels = []) {
     return {
         ...application,
         labels: labels?.map((label) => label.name)

@@ -1,6 +1,7 @@
 import {labelCreateSchema} from "./validation.js";
 import {db, tableNames} from "../../database/index.js";
 import Joi from "joi";
+import {findAndDelete} from "../common.js";
 
 function labelsTable() {
     return db(tableNames.labels);
@@ -18,6 +19,10 @@ export async function createLabels(model) {
 
 export async function deleteLabels(applicationId, labelNames) {
     return labelsTable().whereIn('name', labelNames).andWhere('applicationId', applicationId).del()
+}
+
+export async function deleteApplicationLabels(applicationId) {
+    return findAndDelete(tableNames.labels, { applicationId })
 }
 
 export async function findApplicationLabels(applicationId) {

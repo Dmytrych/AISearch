@@ -2,11 +2,11 @@ import express from "express";
 import * as applicationsController from "./controller.js"
 import {validateBody, validateUrlParams} from "../../middleware/validation/index.js";
 import {
-    applicationCreateSchema,
+    applicationCreateSchema, applicationUpdateSchema, deleteApplicationParamsSchema,
     findApplicationsQuerySchema,
     getApplicationRatesParamsSchema, getMyApplicationRateParamsSchema,
     rateApplicationBodySchema,
-    saveToLibraryParamsSchema
+    saveToLibraryParamsSchema, updateApplicationParamsSchema
 } from "./validation.js";
 import {validateQuery} from "../../middleware/validation/index.js";
 import "express-async-errors"
@@ -19,6 +19,8 @@ export function getApplicationsRouter() {
 
     router.get('/', validateQuery(findApplicationsQuerySchema), applicationsController.get);
     router.post('/', authenticateToken, upload.single('image'), validateBody(applicationCreateSchema), applicationsController.create)
+    router.delete('/:applicationId', authenticateToken, validateUrlParams(deleteApplicationParamsSchema), applicationsController.deleteApplication)
+    router.put('/:applicationId', authenticateToken, validateUrlParams(updateApplicationParamsSchema), validateBody(applicationUpdateSchema), applicationsController.update)
     router.post('/library/save/:id', authenticateToken, validateUrlParams(saveToLibraryParamsSchema), applicationsController.saveToLibrary)
     router.get('/library/', authenticateToken, applicationsController.getLibrary)
     router.post('/rate/', authenticateToken, validateBody(rateApplicationBodySchema), applicationsController.rateApplication)

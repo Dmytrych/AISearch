@@ -1,5 +1,7 @@
 import {db, tableNames} from "../../database/index.js";
 import {applicationCreateSchema} from "./validation.js";
+import {findAndDelete} from "../common.js";
+import {deleteApplicationLabels} from "../labels/labels-repository.js";
 
 function applicationsTable() {
     return db(tableNames.applications);
@@ -45,7 +47,7 @@ export async function updateApplicationRating(applicationId, rating) {
     const newRatedCount = found.ratedCount + 1;
     const newRating = found?.rating === 0 ? rating : (found.rating * found.ratedCount + rating) / newRatedCount
 
-    const result = await applicationsTable().update({
+    const result = await applicationsTable().where({ id: applicationId }).update({
         rating: newRating,
         ratedCount: newRatedCount
     }).returning('*')
@@ -55,4 +57,27 @@ export async function updateApplicationRating(applicationId, rating) {
     }
 
     return undefined;
+}
+
+export async function updateApplication(applicationId, newFields) {
+    const [found] = await applicationsTable().where({ id: applicationId });
+
+    if (!found) {
+        return undefined;
+    }
+
+    const result = await applicationsTable().where({ id: applicationId }).update(newFields).returning('*')
+
+    if (result?.length) {
+        return result[0]
+    }
+
+    return undefined;
+}
+
+export async function deleteOneApplication(applicationId) {
+    const deletionResult = await findAndDelete(tableNames.applications, { id: applicationId })
+    await deleteApplicationLabels(applicationId)
+
+    return deletionResult;
 }

@@ -18,6 +18,14 @@ export const applicationCreateSchema = Joi.object({
     labels: Joi.array().items(Joi.string()).optional()
 });
 
+export const applicationUpdateSchema = Joi.object({
+    name: Joi.string().required(),
+    url: Joi.string().uri().required(),
+    subtitle: Joi.string().max(100),
+    description: Joi.string().max(300),
+    labels: Joi.array().items(Joi.string()).optional()
+});
+
 export const findApplicationsQuerySchema = Joi.object({
     name: Joi.string().optional(),
     labels: Joi.array().items(Joi.string()).optional()
@@ -31,6 +39,14 @@ export const rateApplicationBodySchema = Joi.object({
     applicationId: Joi.number().required(),
     rating: Joi.number().min(0).max(5).required(),
     comment: Joi.string().optional(),
+});
+
+export const deleteApplicationParamsSchema = Joi.object({
+    applicationId: Joi.number().required()
+});
+
+export const updateApplicationParamsSchema = Joi.object({
+    applicationId: Joi.number().required()
 });
 
 export const getApplicationRatesParamsSchema = Joi.object({

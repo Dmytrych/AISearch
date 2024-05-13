@@ -1,9 +1,8 @@
 import {db, tableNames} from "../../database/index.js";
-import {userCreateSchema} from "./validation.js";
+import {userCreateSchema, userUpdateSchema} from "./validation.js";
 
 export async function getUser(id) {
-    const usersResult = await db(tableNames.users).where({ id }).select('*').first();
-    return usersResult[0];
+    return db(tableNames.users).where({ id }).select('*').first();
 }
 
 export async function getUserByEmail(email) {
@@ -19,4 +18,16 @@ export async function createUser(userModel) {
 
     const [createdUser] = await db(tableNames.users).insert({ ...userModel, isAdmin: false }).returning('*');
     return createdUser;
+}
+
+export async function updateUser(userId, userModel) {
+    const { error } = userUpdateSchema.validate(userModel);
+
+    if (error) {
+        throw new Error(error.message);
+    }
+
+    const [updatedUser] = await db(tableNames.users).where({id: userId}).update(userModel).returning('*');
+
+    return updatedUser;
 }
