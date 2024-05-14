@@ -49,11 +49,10 @@ export async function findApplicationsWithLabels(filter = {}) {
     })
 }
 
-export async function createApplication(creationModel, imageFile = undefined) {
+export async function createApplication(creationModel, attachment = undefined) {
     const { labels, ...applicationsData } = creationModel;
 
-    const image = imageFile ? await createImage(imageFile) : null
-    const applicationModel = await createApplicationInDb({ ...applicationsData, imageId: image?.id, imageName: image?.fileName })
+    const applicationModel = await createApplicationInDb({ ...applicationsData, imageId: attachment?.id, imageName: attachment?.fileName })
     const createdLabels = labels?.length ? await appendApplicationLabels(applicationModel.id, labels) : []
 
     return getApplicationClientModel(applicationModel, createdLabels)

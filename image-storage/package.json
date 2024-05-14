@@ -5,23 +5,16 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node ./src/index.js",
-    "db:create-migration": "npx knex migrate:make --knexfile knexfile.cjs",
-    "db:migrate": "knex migrate:latest --knexfile knexfile.cjs",
-    "db:migrate-down": "knex migrate:down --knexfile knexfile.cjs",
-    "db:seed": "knex seed:run --knexfile knexfile.cjs"
+    "start": "node ./src/index.js"
   },
   "author": "Dmytro Habaznia",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.6.8",
     "bcrypt": "^5.1.1",
-    "buffer-to-stream": "^1.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-async-errors": "^3.1.1",
-    "form-data": "^4.0.0",
     "joi": "^17.13.0",
     "jsonwebtoken": "^9.0.2",
     "knex": "^3.1.0",

@@ -1,5 +1,4 @@
 import express from "express"
-import {getApplicationsRouter} from "./api/controllers/applications/index.js"
 import dotenv  from "dotenv"
 import cors from "cors"
 import {getConfig} from "./lib/config/index.js";
@@ -7,7 +6,6 @@ import {initDbConnection} from "./database/index.js";
 import morgan from "morgan";
 import {initLogger} from "./lib/logging/index.js";
 import {getImagesRouter} from "./api/controllers/images/index.js";
-import {getAuthRouter} from "./api/controllers/auth/index.js";
 
 dotenv.config();
 const config = getConfig();
@@ -22,9 +20,7 @@ app.use(cors())
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms - Body: :body'));
 
-app.use('/applications', getApplicationsRouter(config));
 app.use('/images', getImagesRouter())
-app.use('/auth', getAuthRouter(config))
 
 morgan.token('body', (req) => {
     return JSON.stringify(req.body || '');

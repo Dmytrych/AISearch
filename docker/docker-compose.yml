@@ -13,8 +13,27 @@ services:
       - PG_PORT=5432
       - PORT=4000
       - NODE_ENV=development
+      - IMAGE_STORAGE_URL=http://image-store:4001/images
     ports:
       - '4000:4000'
+    depends_on:
+      - postgres
+      - image-store
+
+  image-store:
+    build: ../image-storage/
+    container_name: image-storage
+    environment:
+      - MONGO_URL=mongodb://postgres:5432/AISearch
+      - PG_USER=postgres
+      - PG_PASSWORD=postgres
+      - PG_HOST=postgres
+      - PG_DATABASE_NAME=AISearch
+      - PG_PORT=5432
+      - PORT=4001
+      - NODE_ENV=development
+    ports:
+      - '4001:4001'
     depends_on:
       - postgres
 

@@ -28,7 +28,7 @@ export async function get(req, res) {
 }
 
 export async function create(req, res) {
-    const data = await createApplication(req.body, req.file)
+    const data = await createApplication(req.body, req.attachment)
 
     res.json(data);
 }

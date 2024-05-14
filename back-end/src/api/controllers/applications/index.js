@@ -12,14 +12,15 @@ import {validateQuery} from "../../middleware/validation/index.js";
 import "express-async-errors"
 import multer from "multer";
 import {authenticateToken} from "../../middleware/auth/index.js";
+import {getAttachmentMiddleware} from "../../middleware/file-upload/index.js";
 
-export function getApplicationsRouter() {
+export function getApplicationsRouter(config) {
     const router = express.Router()
     const upload = multer()
 
     router.post('/register-view/:applicationId', validateUrlParams(applicationViewParamsSchema), applicationsController.registerView);
     router.get('/', validateQuery(findApplicationsQuerySchema), applicationsController.get);
-    router.post('/', authenticateToken, upload.single('image'), validateBody(applicationCreateSchema), applicationsController.create)
+    router.post('/', authenticateToken, upload.single('image'), getAttachmentMiddleware(config.IMAGE_STORAGE_URL), validateBody(applicationCreateSchema), applicationsController.create)
     router.delete('/:applicationId', authenticateToken, validateUrlParams(deleteApplicationParamsSchema), applicationsController.deleteApplication)
     router.put('/:applicationId', authenticateToken, validateUrlParams(updateApplicationParamsSchema), validateBody(applicationUpdateSchema), applicationsController.update)
     router.post('/library/save/:id', authenticateToken, validateUrlParams(saveToLibraryParamsSchema), applicationsController.saveToLibrary)
