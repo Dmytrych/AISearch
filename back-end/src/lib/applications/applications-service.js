@@ -78,6 +78,17 @@ export async function getService(req, res) {
     res.json(data);
 }
 
+export async function getServiceById(req, res) {
+    const data = await findApplication(req.params.applicationId)
+
+    if (!data) {
+        res.json({ error: "The application not found" })
+        return;
+    }
+
+    res.json(data);
+}
+
 export async function createService(req, res) {
     const data = await createApplication(req.body, req.attachment)
 
@@ -133,15 +144,15 @@ export async function getLibraryService(req, res) {
 }
 
 export async function rateApplicationService(req, res) {
-    await createApplicationRate({
+    const rate = await createApplicationRate({
         applicationId: req.body.applicationId,
         ratedBy: req.user.id,
         rating: req.body.rating,
         comment: req.body.comment,
     })
-    const updatedApplication = await updateApplicationRating(req.body.applicationId, req.body.rating)
+    await updateApplicationRating(req.body.applicationId, req.body.rating)
 
-    res.json(updatedApplication);
+    res.json({ ...rate, username: req.user.nickname });
 }
 
 export async function getRatingsService(req, res) {
@@ -151,7 +162,12 @@ export async function getRatingsService(req, res) {
 }
 
 export async function getMyRatingService(req, res) {
-    const applicationRates = await getMyApplicationsRates(req.user.id, req.params.applicationId)
+    const applicationRate = await getMyApplicationsRates(req.user.id, req.params.applicationId)
 
-    res.json(applicationRates);
+    if (!applicationRate) {
+        res.status(200);
+        return;
+    }
+
+    res.json({ ...applicationRate, username: req.user.nickname });
 }

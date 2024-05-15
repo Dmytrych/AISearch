@@ -2,11 +2,18 @@ import express from "express";
 import * as applicationsController from "./controller.js"
 import {validateBody, validateUrlParams} from "../../middleware/validation/index.js";
 import {
-    applicationCreateSchema, applicationUpdateSchema, applicationViewParamsSchema, deleteApplicationParamsSchema,
+    applicationCreateSchema,
+    applicationUpdateSchema,
+    applicationViewParamsSchema,
+    deleteApplicationParamsSchema,
+    findApplicationParamsSchema,
     findApplicationsQuerySchema,
-    getApplicationRatesParamsSchema, getMyApplicationRateParamsSchema,
-    rateApplicationBodySchema, removeFromLibraryParamsSchema,
-    saveToLibraryParamsSchema, updateApplicationParamsSchema
+    getApplicationRatesParamsSchema,
+    getMyApplicationRateParamsSchema,
+    rateApplicationBodySchema,
+    removeFromLibraryParamsSchema,
+    saveToLibraryParamsSchema,
+    updateApplicationParamsSchema
 } from "./validation.js";
 import {validateQuery} from "../../middleware/validation/index.js";
 import "express-async-errors"
@@ -20,6 +27,7 @@ export function getApplicationsRouter(config) {
 
     router.post('/register-view/:applicationId', validateUrlParams(applicationViewParamsSchema), applicationsController.registerView);
     router.get('/', validateQuery(findApplicationsQuerySchema), applicationsController.get);
+    router.get('/:applicationId', validateUrlParams(findApplicationParamsSchema), applicationsController.getById);
     router.post('/', authenticateToken, upload.single('image'), getAttachmentMiddleware(config.IMAGE_STORAGE_URL), validateBody(applicationCreateSchema), applicationsController.create)
     router.delete('/:applicationId', authenticateToken, validateUrlParams(deleteApplicationParamsSchema), applicationsController.deleteApplication)
     router.put('/:applicationId', authenticateToken, validateUrlParams(updateApplicationParamsSchema), validateBody(applicationUpdateSchema), applicationsController.update)

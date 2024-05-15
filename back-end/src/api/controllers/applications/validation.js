@@ -22,13 +22,17 @@ export const applicationUpdateSchema = Joi.object({
     name: Joi.string().required(),
     url: Joi.string().uri().required(),
     subtitle: Joi.string().max(100),
-    description: Joi.string().max(300),
+    description: Joi.string(),
     labels: Joi.array().items(Joi.string()).optional()
 });
 
 export const findApplicationsQuerySchema = Joi.object({
     name: Joi.string().optional(),
     labels: Joi.array().items(Joi.string()).optional()
+});
+
+export const findApplicationParamsSchema = Joi.object({
+    applicationId: Joi.number().required(),
 });
 
 export const saveToLibraryParamsSchema = Joi.object({

@@ -1,4 +1,4 @@
-import {tableNames} from "../../database/index.js";
+import {db, tableNames} from "../../database/index.js";
 import {applicationRateCreateSchema} from "./validation.js";
 import {createItem, findItems, findOne} from "../common.js";
 
@@ -11,11 +11,11 @@ export async function getApplicationsRate(ratedBy, applicationId) {
 }
 
 export async function getApplicationsRates(applicationId) {
-    return findItems(tableNames.applicationRates, (query) => query.where({ applicationId }))
+    return db(tableNames.applicationRates).where({ applicationId }).join(tableNames.users, `${tableNames.users}.id`, '=', `${tableNames.applicationRates}.ratedBy`).select(`${tableNames.applicationRates}.*`, `${tableNames.users}.nickname`)
 }
 
 export async function getMyApplicationsRates(ratedBy, applicationId) {
-    return findItems(tableNames.applicationRates, (query) => query.where({ applicationId, ratedBy }))
+    return findOne(tableNames.applicationRates, (query) => query.where({ applicationId, ratedBy }))
 }
 
 

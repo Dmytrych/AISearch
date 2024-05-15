@@ -2042,3 +2042,13 @@
     data: { error: 'Internal server error' }
   }
 }
+[2024-05-15T23:01:18.821] [ERROR] app - Error: Undefined binding(s) detected when compiling SELECT. Undefined column(s): [id] query: select * from "applications" where "id" = ?
+    at QueryCompiler_PG.toSQL (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querycompiler.js:112:13)
+    at QueryBuilder_PostgreSQL.toSQL (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\query\querybuilder.js:84:44)
+    at ensureConnectionCallback (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\execution\internal\ensure-connection-callback.js:4:30)
+    at Runner.ensureConnection (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\execution\runner.js:318:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Runner.run (E:\Projects\Git\AISearch\back-end\node_modules\knex\lib\execution\runner.js:30:19)
+    at async findApplication (file:///E:/Projects/Git/AISearch/back-end/src/repositories/applications/applications-repository.js:22:28)
+    at async getServiceById (file:///E:/Projects/Git/AISearch/back-end/src/lib/applications/applications-service.js:82:18)
+    at async getById (file:///E:/Projects/Git/AISearch/back-end/src/api/controllers/applications/controller.js:20:12)

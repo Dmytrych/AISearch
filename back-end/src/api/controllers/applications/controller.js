@@ -1,7 +1,7 @@
 import {
     createService,
     deleteApplicationService, getLibraryService, getMyRatingService, getRatingsService,
-    getService, rateApplicationService,
+    getService, getServiceById, rateApplicationService,
     registerViewService,
     removeFromLibraryService,
     saveToLibraryService,
@@ -14,6 +14,10 @@ export async function registerView(req, res) {
 
 export async function get(req, res) {
     return await getService(req, res)
+}
+
+export async function getById(req, res) {
+    return await getServiceById(req, res)
 }
 
 export async function create(req, res) {
