@@ -16,7 +16,9 @@ export async function updateLabels(applicationId, labelNames) {
     await deleteLabels(applicationId, labelNamesToDelete);
 
     const newLabelNames = labelNames.filter((label) => !labelNamesToKeep.includes(label));
-    await appendApplicationLabels(applicationId, newLabelNames);
+    if (newLabelNames?.length) {
+        await appendApplicationLabels(applicationId, newLabelNames);
+    }
 
     return await findApplicationLabels(applicationId);
 }

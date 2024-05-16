@@ -104,7 +104,13 @@ export async function deleteApplicationService(req, res) {
 export async function updateService(req, res) {
     const { labels, ...applicationData } = req.body;
 
-    const data = await updateApplication(req.params.applicationId, applicationData)
+    const updatedModel = req.attachment ? {
+        ...applicationData,
+        imageId: req.attachment.id,
+        imageName: req.attachment.fileName
+    } : applicationData
+
+    const data = await updateApplication(req.params.applicationId, updatedModel)
     const updatedLabels = labels?.length ? await updateLabels(req.params.applicationId, labels) : []
 
     res.json(getApplicationClientModel(data, updatedLabels));

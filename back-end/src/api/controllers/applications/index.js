@@ -30,7 +30,13 @@ export function getApplicationsRouter(config) {
     router.get('/:applicationId', validateUrlParams(findApplicationParamsSchema), applicationsController.getById);
     router.post('/', authenticateToken, upload.single('image'), getAttachmentMiddleware(config.IMAGE_STORAGE_URL), validateBody(applicationCreateSchema), applicationsController.create)
     router.delete('/:applicationId', authenticateToken, validateUrlParams(deleteApplicationParamsSchema), applicationsController.deleteApplication)
-    router.put('/:applicationId', authenticateToken, validateUrlParams(updateApplicationParamsSchema), validateBody(applicationUpdateSchema), applicationsController.update)
+    router.put('/:applicationId',
+        authenticateToken,
+        upload.single('image'),
+        getAttachmentMiddleware(config.IMAGE_STORAGE_URL),
+        validateUrlParams(updateApplicationParamsSchema),
+        validateBody(applicationUpdateSchema),
+        applicationsController.update)
     router.post('/library/save/:id', authenticateToken, validateUrlParams(saveToLibraryParamsSchema), applicationsController.saveToLibrary)
     router.get('/library/', authenticateToken, applicationsController.getLibrary)
     router.delete('/library/:applicationId', authenticateToken, validateUrlParams(removeFromLibraryParamsSchema), applicationsController.removeFromLibrary)
