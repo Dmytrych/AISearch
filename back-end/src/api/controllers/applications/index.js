@@ -26,11 +26,11 @@ export function getApplicationsRouter(config) {
     const upload = multer()
 
     router.post('/register-view/:applicationId', validateUrlParams(applicationViewParamsSchema), applicationsController.registerView);
-    router.get('/', validateQuery(findApplicationsQuerySchema), applicationsController.get);
-    router.get('/:applicationId', validateUrlParams(findApplicationParamsSchema), applicationsController.getById);
-    router.post('/', authenticateToken, upload.single('image'), getAttachmentMiddleware(config.IMAGE_STORAGE_URL), validateBody(applicationCreateSchema), applicationsController.create)
-    router.delete('/:applicationId', authenticateToken, validateUrlParams(deleteApplicationParamsSchema), applicationsController.deleteApplication)
-    router.put('/:applicationId',
+    router.get('/storage', validateQuery(findApplicationsQuerySchema), applicationsController.get);
+    router.get('/storage/:applicationId', validateUrlParams(findApplicationParamsSchema), applicationsController.getById);
+    router.post('/storage', authenticateToken, upload.single('image'), getAttachmentMiddleware(config.IMAGE_STORAGE_URL), validateBody(applicationCreateSchema), applicationsController.create)
+    router.delete('/storage/:applicationId', authenticateToken, validateUrlParams(deleteApplicationParamsSchema), applicationsController.deleteApplication)
+    router.put('/storage/:applicationId',
         authenticateToken,
         upload.single('image'),
         getAttachmentMiddleware(config.IMAGE_STORAGE_URL),
