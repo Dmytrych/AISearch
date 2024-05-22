@@ -46,12 +46,14 @@ export async function updateProfileService(req, res) {
 export async function authenticateService(req, res) {
     const user = await getUserByEmail(req.body.email);
     if (!user) {
-        return res.status(200).json({error: "User not found"});
+        res.status(200).json({error: "User not found"})
+        return;
     }
 
     const isPasswordValid = bcrypt.compareSync(req.body.password, user.passwordHash);
     if (!isPasswordValid) {
-        return res.status(200).json({error: "The password is invalid"});
+        res.status(200).json({error: "The password is invalid"});
+        return;
     }
 
     const token = jwt.sign({ ...getUserClientModel(user) }, JWT_SECRET_KEY, { expiresIn: '2h' });

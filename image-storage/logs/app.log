@@ -681,3 +681,71 @@
   field: 'file',
   storageErrors: []
 }
+[2024-05-17T12:58:15.956] [ERROR] app - error: ���������� "postgres" �� ������� �������������� �� ��������� ������
+    at Parser.parseErrorMessage (E:\Projects\Git\AISearch\image-storage\node_modules\pg-protocol\dist\parser.js:283:98)
+    at Parser.handlePacket (E:\Projects\Git\AISearch\image-storage\node_modules\pg-protocol\dist\parser.js:122:29)
+    at Parser.parse (E:\Projects\Git\AISearch\image-storage\node_modules\pg-protocol\dist\parser.js:35:38)
+    at Socket.<anonymous> (E:\Projects\Git\AISearch\image-storage\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+    at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+  length: 124,
+  severity: '��������',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '326',
+  routine: 'auth_failed'
+}
+[2024-05-17T12:58:15.967] [ERROR] app - Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:217:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+[2024-05-17T12:58:15.968] [ERROR] app - Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:217:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+[2024-05-17T12:58:15.972] [ERROR] app - error: ���������� "postgres" �� ������� �������������� �� ��������� ������
+    at Parser.parseErrorMessage (E:\Projects\Git\AISearch\image-storage\node_modules\pg-protocol\dist\parser.js:283:98)
+    at Parser.handlePacket (E:\Projects\Git\AISearch\image-storage\node_modules\pg-protocol\dist\parser.js:122:29)
+    at Parser.parse (E:\Projects\Git\AISearch\image-storage\node_modules\pg-protocol\dist\parser.js:35:38)
+    at Socket.<anonymous> (E:\Projects\Git\AISearch\image-storage\node_modules\pg-protocol\dist\index.js:11:42)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+    at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+  length: 124,
+  severity: '��������',
+  code: '28P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'auth.c',
+  line: '326',
+  routine: 'auth_failed'
+}

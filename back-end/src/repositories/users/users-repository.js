@@ -1,12 +1,13 @@
 import {db, tableNames} from "../../database/index.js";
 import {userCreateSchema, userUpdateSchema} from "./validation.js";
+import {findOne} from "../common.js";
 
 export async function getUser(id) {
     return db(tableNames.users).where({ id }).select('*').first();
 }
 
 export async function getUserByEmail(email) {
-    return db(tableNames.users).where({ email }).first();
+    return findOne(tableNames.users, { email });
 }
 
 export async function createUser(userModel) {
