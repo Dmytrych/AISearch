@@ -13,8 +13,8 @@ const applicationSchema = Joi.object({
 export const applicationCreateSchema = Joi.object({
     name: Joi.string().required(),
     url: Joi.string().uri().required(),
-    subtitle: Joi.string().max(100),
-    description: Joi.string().max(300),
+    subtitle: Joi.string(),
+    description: Joi.string(),
     labels: Joi.array().items(Joi.string()).optional()
 });
 
