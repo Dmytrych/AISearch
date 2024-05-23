@@ -37,21 +37,21 @@ export const Layout: React.FC = () => {
             <StyledLink to={ROUTES.LIBRARY}>
               <AutoStoriesIcon />
               <Typography variant='h4' textTransform="uppercase">
-                Library
+                Бібліотека
               </Typography>
             </StyledLink>
 
             <StyledLink to={ROUTES.PROFILE}>
               <PersonIcon />
               <Typography variant='h4' textTransform="uppercase">
-                Profile
+                Профіль
               </Typography>
             </StyledLink>
 
             <StyledLink to={ROUTES.MAIN} onClick={logout}>
               <LogoutIcon />
               <Typography variant='h4' textTransform="uppercase">
-                Sign Out
+                Вийти
               </Typography>
             </StyledLink>
           </Stack>
@@ -59,7 +59,7 @@ export const Layout: React.FC = () => {
           <StyledLink to={ROUTES.LOGIN}>
             <LoginIcon />
             <Typography variant='h4' textTransform="uppercase">
-              Sign In
+              Увійти
             </Typography>
           </StyledLink>
         )}

@@ -71,7 +71,6 @@ export const ProfilePage: React.FC = () => {
   };
 
   const createdAtDate = profile?.createdAt ? new Date(profile.createdAt) : null;
-  const updatedAtDate = profile?.updatedAt ? new Date(profile.updatedAt) : null;
 
   return (
     <Stack height="100%" alignItems="center" justifyContent="center">
@@ -79,14 +78,14 @@ export const ProfilePage: React.FC = () => {
         <Stack direction="row" gap="8px" alignItems="center">
           <PersonIcon fontSize="large" color="primary" />
           <Typography variant="h2" color="primary">
-            Profile
+            Профіль
           </Typography>
         </Stack>
         <Box height="24px" />  
         <Stack gap="16px">
           <StyledTextField
             disabled={!editMode}
-            label="Nickname"
+            label="Ім'я"
             variant="outlined"
             fullWidth
             value={nickname}
@@ -103,10 +102,7 @@ export const ProfilePage: React.FC = () => {
         </Stack>
         <Stack gap="8px" marginTop="16px" alignItems="flex-end">
           {createdAtDate && <Typography variant="body2" color="grey.700">
-            Created At: {createdAtDate.toLocaleDateString()} {createdAtDate.toLocaleTimeString()}
-          </Typography>}
-          {updatedAtDate && <Typography variant="body2" color="grey.700">
-            Updated At: {updatedAtDate.toLocaleDateString()} {updatedAtDate.toLocaleTimeString()}
+            Дата створення: {createdAtDate.toLocaleDateString()} {createdAtDate.toLocaleTimeString()}
           </Typography>}
         </Stack>
         <Stack direction="row" mt="24px" gap="24px">
@@ -117,7 +113,7 @@ export const ProfilePage: React.FC = () => {
             color="primary" 
             onClick={handleMainButtonClick}
           >
-            {editMode ? 'Save' : 'Edit'}
+            {editMode ? 'Зберегти' : 'Редагувати'}
           </Button>
           {editMode && <Button
             fullWidth 
@@ -126,7 +122,7 @@ export const ProfilePage: React.FC = () => {
             color="primary" 
             onClick={handleCancelClick}
           >
-            Cancel
+            Відміна
           </Button>}
         </Stack>
       </Stack>
