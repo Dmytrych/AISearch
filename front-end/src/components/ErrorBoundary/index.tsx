@@ -26,7 +26,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
   render() {
     if (this.state.hasError) {
       return (
-       <Typography variant='h1'>404 Page not found</Typography>
+       <Typography variant='h1'>404 Сторінка не знайдена</Typography>
       );
     }
     return this.props.children;

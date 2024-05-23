@@ -35,7 +35,7 @@ export const LibraryPage: React.FC = () => {
   return (
     <Stack alignItems="center" justifyContent="center" gap="24px" flexWrap="wrap" margin="24px">
       <Typography variant='h3' width="70%">
-        Saved AI tools
+        Збережені сервіси ШІ
       </Typography>
       {items.map(value => (
         <Card sx={{ width: '70%', minWidth: '300px', display: 'flex', alignItems: 'center' }}>
@@ -49,7 +49,7 @@ export const LibraryPage: React.FC = () => {
           </Link>
           <Box width='100%' sx={{ padding: '16px' }}>
             <Typography variant="h4">
-              {value.name}
+              {value.name}і
             </Typography>
             <Box height="8px" />
             <Typography variant="body2" color="grey.700" maxHeight="2.7rem" overflow="hidden">
@@ -63,7 +63,7 @@ export const LibraryPage: React.FC = () => {
             </Stack>
             <Box height="8px" />
             <Stack direction="row" alignItems="center" justifyContent="flex-end" gap="8px">
-              <Typography variant='caption' color="grey.700" pt="2px">Views: {value.views} | Saves: {value.saves}</Typography>
+              <Typography variant='caption' color="grey.700" pt="2px">Перегляди: {value.views} | Збереження: {value.saves}</Typography>
               <Rating name="read-only" value={value.rating} readOnly />
             </Stack>
           </Box>

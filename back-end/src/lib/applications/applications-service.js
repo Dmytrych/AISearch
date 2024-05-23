@@ -120,7 +120,7 @@ export async function saveToLibraryService(req, res) {
     const application = await findApplication(req.params.id)
 
     if (!application) {
-        res.status(400);
+        res.status(400).json({ error: "The application was not found" });
         return;
     }
 

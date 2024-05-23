@@ -88,7 +88,7 @@ export const MainPage: React.FC = () => {
           <FormControl fullWidth size='small'>
             <OutlinedInput
               startAdornment={<InputAdornment position="start"><SearchIcon /></InputAdornment>}
-              placeholder='Search by name, description'
+              placeholder='Пошук в імені, описі'
               value={nameSearch}
               onChange={handleNameSearchChage}
             />
@@ -97,54 +97,54 @@ export const MainPage: React.FC = () => {
           <FormControl fullWidth size='small'>
             <OutlinedInput
               startAdornment={<InputAdornment position="start"><SearchIcon /></InputAdornment>}
-              placeholder='Search by labels'
+              placeholder='Пошук в тегах'
               value={labelSearch}
               onChange={handleLabelSearchChange}
             />
           </FormControl>
         </Stack>
         <Stack direction="row" gap="8px" alignItems="center">
-          <Typography variant='button'>Sort by</Typography>
+          <Typography variant='button'>Сортування:</Typography>
           <ButtonGroup orientation="horizontal">
             <SortButton 
               type='rated'
-              name='Best rated'
+              name='Найкращі оцінки'
               sortBy={sortBy}
               onClick={handleSortByClick}
             />
             <SortButton 
               type='viewed'
-              name='Most viewed'
+              name='Найбільше переглядів'
               sortBy={sortBy}
               onClick={handleSortByClick}
             />
             <SortButton 
               type='saved'
-              name='Most saved'
+              name='Найбільше збережень'
               sortBy={sortBy}
               onClick={handleSortByClick}
             />
             <SortButton 
               type='newest'
-              name='Newest'
+              name='Найновіші'
               sortBy={sortBy}
               onClick={handleSortByClick}
             />
             <SortButton 
               type='oldest'
-              name='Oldest'
+              name='Найстаріші'
               sortBy={sortBy}
               onClick={handleSortByClick}
             />
             <SortButton 
               type='a-z'
-              name='By name A-Z'
+              name='За назвою A-Z'
               sortBy={sortBy}
               onClick={handleSortByClick}
             />
             <SortButton 
               type='z-a'
-              name='By name Z-A'
+              name='За назвою Z-A'
               sortBy={sortBy}
               onClick={handleSortByClick}
             />
@@ -179,7 +179,7 @@ export const MainPage: React.FC = () => {
               </Stack>
               <Box height="8px" />
               <Stack direction="row" alignItems="center" justifyContent="flex-end" gap="8px">
-                <Typography variant='caption' color="grey.700" pt="2px">Views: {value.views} | Saves: {value.saves}</Typography>
+                <Typography variant='caption' color="grey.700" pt="2px">Перегляди: {value.views} | Збереження: {value.saves}</Typography>
                 <Rating name="read-only" value={value.rating} readOnly />
               </Stack>
             </Box>

@@ -93,7 +93,7 @@ export const DetailsPage: React.FC = () => {
       setSavedToLibrary(true);
 
       dispatch(resetLoading());
-      dispatch(setSuccessBanner('Tool is saved to library!'));
+      dispatch(setSuccessBanner('Сервіс збережено до бібліотеки!'));
     } catch (e) {
       dispatch(resetLoading());
       dispatch(setErrorBanner());
@@ -113,7 +113,7 @@ export const DetailsPage: React.FC = () => {
       setSavedToLibrary(false);
 
       dispatch(resetLoading());
-      dispatch(setSuccessBanner('Tool is removed from library!'));
+      dispatch(setSuccessBanner('Сервіс видалено з бібліотеки!'));
     } catch (e) {
       dispatch(resetLoading());
       dispatch(setErrorBanner());
@@ -153,14 +153,14 @@ export const DetailsPage: React.FC = () => {
             </Stack>}
             <Stack gap="16px">
               <Rating name="read-only" size='large' value={item.rating} readOnly />
-              <Typography variant='body2' color="grey.700" pt="2px">Rated By: {item.ratedCount}</Typography>
-              <Typography variant='body2' color="grey.700" pt="2px">Views: {item.views}</Typography>
-              <Typography variant='body2' color="grey.700" pt="2px">Saves: {item.saves}</Typography>  
+              <Typography variant='body2' color="grey.700" pt="2px">Кількість оцінок: {item.ratedCount}</Typography>
+              <Typography variant='body2' color="grey.700" pt="2px">Перегляди: {item.views}</Typography>
+              <Typography variant='body2' color="grey.700" pt="2px">Збереження: {item.saves}</Typography>
               <Typography variant="body2" color="grey.700">
-                Created At: {createdAtDate.toLocaleDateString()} {createdAtDate.toLocaleTimeString()}
+                Дата створення: {createdAtDate.toLocaleDateString()} {createdAtDate.toLocaleTimeString()}
               </Typography>
               <Typography variant="body2" color="grey.700">
-                Updated At: {updatedAtDate.toLocaleDateString()} {updatedAtDate.toLocaleTimeString()}
+                Дата оновлення: {updatedAtDate.toLocaleDateString()} {updatedAtDate.toLocaleTimeString()}
               </Typography>
             </Stack>
           </Box>
@@ -174,18 +174,18 @@ export const DetailsPage: React.FC = () => {
             {!!user && (
               savedToLibrary ? (
                 <Button variant='outlined' onClick={handleRemoveFromLibraryClick}>
-                  — Remove from library
+                  — Видалити з бібліотеки
                 </Button>
               ) : ( 
                 <Button variant='outlined' onClick={handleSaveToLibraryClick}>
-                  + Save to library
+                  + Зберегти до бібліотеки
                 </Button>
               )
             )}
           </Stack>
         </Stack>
         <Typography variant='h3'>
-          {rates?.length || 0} {rates?.length == 1 ? 'Comment' : 'Comments'} {/* TODO S */}
+          {rates?.length || 0} {rates?.length == 1 ? 'Коментар' : 'Коментарів'} {/* TODO S */}
         </Typography>
         {!!user && (
           <Stack 
@@ -203,7 +203,7 @@ export const DetailsPage: React.FC = () => {
               <Rating size='large' value={rate} onChange={(_, newValue) => setRate(newValue)} />
             </Stack>
             <TextField
-              label="Leave comment (optional)"
+              label="Коментар (не обов'язково)"
               variant="outlined"
               multiline
               minRows={3}

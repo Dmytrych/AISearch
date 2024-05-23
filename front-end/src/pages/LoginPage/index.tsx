@@ -65,7 +65,7 @@ export const LoginPage: React.FC = () => {
       });
       if ((response as unknown as { error: string }).error) {
         // BE returns error as a response with code 200
-        throw new Error('Invalid credentials');
+        throw new Error('Неправильні вхідні дані');
       }
       localStorage.setItem("access_token", response.token);
       dispatch(setUser(response));
@@ -83,13 +83,13 @@ export const LoginPage: React.FC = () => {
     <Stack height="100%" alignItems="center" justifyContent="center">
       <Stack width="30%" marginBottom="10%">
         <Typography variant="h2" color="primary">
-          {isLoginForm ? 'Sign In' : 'Sign Up'}
+          {isLoginForm ? 'Увійти' : 'Зареєструватися'}
         </Typography>
         <Box height="24px" />  
         <Stack gap="16px">
           {!isLoginForm && (
             <TextField
-              label="Nickname"
+              label="Ім'я"
               variant="outlined"
               fullWidth
               value={nickname}
@@ -97,14 +97,14 @@ export const LoginPage: React.FC = () => {
             />
           )}
           <TextField
-            label="Email"
+            label="Електронна пошта"
             variant="outlined"
             fullWidth
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
-            label="Password"
+            label="Пароль"
             type="password"
             variant="outlined"
             fullWidth
@@ -120,7 +120,7 @@ export const LoginPage: React.FC = () => {
             color="primary" 
             onClick={handleLoginClick}
           >
-            Sign In
+            Увійти
           </Button>
           <Button 
             fullWidth 
@@ -129,7 +129,7 @@ export const LoginPage: React.FC = () => {
             color="primary" 
             onClick={handleRegisterClick}
           >
-            Sign Up
+            Зареєструватися
           </Button>
         </Stack>
       </Stack>
