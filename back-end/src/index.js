@@ -8,6 +8,7 @@ import morgan from "morgan";
 import {initLogger} from "./lib/logging/index.js";
 import {getImagesRouter} from "./api/controllers/images/index.js";
 import {getAuthRouter} from "./api/controllers/auth/index.js";
+import {getKeywordAnalysisRouter} from "./api/controllers/keywordAnalysis/index.js";
 
 dotenv.config();
 const config = getConfig();
@@ -25,6 +26,7 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms - 
 app.use('/applications', getApplicationsRouter(config));
 app.use('/images', getImagesRouter())
 app.use('/auth', getAuthRouter(config))
+app.use('/keyword-analysis', getKeywordAnalysisRouter())
 
 morgan.token('body', (req) => {
     return JSON.stringify(req.body || '');
