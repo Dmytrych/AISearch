@@ -17,6 +17,7 @@ class Document(Base):
     __tablename__ = 'documents'
     id = Column(Integer, primary_key=True, autoincrement=True)
     content = Column(Text, nullable=False)
+    externalId = Column(Integer, nullable=False)
 
 
 # Define the Keyword table

@@ -12,6 +12,7 @@ import {
     getApplicationsRates,
     getMyApplicationsRates
 } from "../../repositories/applicationRates/index.js";
+import axios from "axios";
 
 export function getApplicationClientModel(application, labels = []) {
     return {
@@ -32,19 +33,18 @@ export async function findApplicationsWithLabels(filter = {}) {
         }
     }
 
-    const nameFilter = !filter.name ? undefined : (query) => query
-        .where('name', 'ilike', `%${filter.name}%`)
-        .orWhere('subtitle', 'ilike', `%${filter.name}%`)
-        .orWhere('description', 'ilike', `%${filter.name}%`)
+    if (filter.name?.length) {
+      const data = await findByName(filter.name)
+      const applicationIds = data.map((document) => document.externalId)
+      applicationIdsFilter = applicationIdsFilter ? [...applicationIdsFilter, applicationIds] : applicationIds
+    }
+
     const applications = await findAllApplications((query) => {
         let executedQuery = query
         if (applicationIdsFilter) {
             executedQuery = query.whereIn('id', applicationIdsFilter)
         }
-        if (nameFilter) {
-            executedQuery = query.orWhere(nameFilter)
-        }
-        return query
+        return executedQuery
     })
 
     if (!applications?.length) {
@@ -91,6 +91,14 @@ export async function getServiceById(req, res) {
 
 export async function createService(req, res) {
     const data = await createApplication(req.body, req.attachment)
+
+    if (data && data.id) {
+      try {
+        await analyze(`${data.name} ${data.subtitle} ${data.description}`, data.id)
+      } catch (e) {
+        await deleteOneApplication(data.id)
+      }
+    }
 
     res.json(data);
 }
@@ -176,4 +184,35 @@ export async function getMyRatingService(req, res) {
     }
 
     res.json({ ...applicationRate, username: req.user.nickname });
+}
+
+export async function analyze(content, applicationId) {
+  const response = await axios.post('http://127.0.0.1:5000/store', {
+    content,
+    applicationId
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  if (!response || response.status !== 200) {
+    throw new Error("Failed to create");
+  }
+}
+
+export async function findByName(query) {
+  const response = await axios.post('http://127.0.0.1:5000/search', {
+    query
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  if (!response || response.status !== 200) {
+    throw new Error("Failed to find");
+  }
+
+  return response.data
 }
