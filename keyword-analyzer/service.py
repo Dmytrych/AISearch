@@ -9,6 +9,9 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from database import Document, Keyword
 
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
 vectorizer = TfidfVectorizer(stop_words='english', ngram_range=(1, 3))
 
 

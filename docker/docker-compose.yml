@@ -5,7 +5,6 @@ services:
     build: ../back-end/
     container_name: ai-search-backend
     environment:
-      - MONGO_URL=mongodb://postgres:5432/AISearch
       - PG_USER=postgres
       - PG_PASSWORD=postgres
       - PG_HOST=postgres
@@ -13,18 +12,19 @@ services:
       - PG_PORT=5432
       - PORT=4000
       - NODE_ENV=development
+      - KEYWORD_ANALYZER_URL=http://keyword-analyzer:5000
       - IMAGE_STORAGE_URL=http://image-store:4001/images
     ports:
       - '4000:4000'
     depends_on:
       - postgres
       - image-store
+      - keyword-analyzer
 
   image-store:
     build: ../image-storage/
     container_name: image-storage
     environment:
-      - MONGO_URL=mongodb://postgres:5432/AISearch
       - PG_USER=postgres
       - PG_PASSWORD=postgres
       - PG_HOST=postgres
@@ -34,6 +34,17 @@ services:
       - NODE_ENV=development
     ports:
       - '4001:4001'
+    depends_on:
+      - postgres
+
+  keyword-analyzer:
+    build: ../keyword-analyzer/
+    container_name: keyword-analyzer
+    environment:
+      - DATABASE_URI=postgresql+psycopg2://postgres:postgres@postgres/AISearch
+      - PORT=5000
+    ports:
+      - '5000:5000'
     depends_on:
       - postgres
 

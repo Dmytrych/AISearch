@@ -1,9 +1,11 @@
+import os
+
 from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey, Text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 
 # Define the database URI
-DATABASE_URI = 'postgresql+psycopg2://postgres:karambol@localhost/AISearch_Analythics'
+DATABASE_URI = os.getenv('DATABASE_URI', 'postgresql+psycopg2://postgres:karambol@localhost/AISearch_Analythics')
 
 # Create the database engine
 engine = create_engine(DATABASE_URI)

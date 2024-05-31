@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, request, jsonify
 from database import Session as DBSession
 from service import store_tfidf_results, get_tfidf_results, search_documents, extract_keywords_service_call
@@ -59,6 +61,7 @@ def search():
 
     return jsonify(results)
 
+PORT = os.getenv('PORT', '5000')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=int(PORT))

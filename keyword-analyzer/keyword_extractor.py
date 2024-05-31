@@ -87,11 +87,3 @@ def main(file_path, min_n, max_n, num_keywords):
     print("\nNamed Entities:")
     for entity in named_entities:
         print(entity)
-
-
-# Example usage
-file_path = 'testfile.txt'
-min_n = 1
-max_n = 3
-num_keywords = 10
-main(file_path, min_n, max_n, num_keywords)

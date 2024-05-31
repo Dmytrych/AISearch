@@ -187,7 +187,7 @@ export async function getMyRatingService(req, res) {
 }
 
 export async function analyze(content, applicationId) {
-  const response = await axios.post('http://127.0.0.1:5000/store', {
+  const response = await axios.post(`${process.env.KEYWORD_ANALYZER_URL}/store`, {
     content,
     applicationId
   }, {
@@ -202,7 +202,7 @@ export async function analyze(content, applicationId) {
 }
 
 export async function findByName(query) {
-  const response = await axios.post('http://127.0.0.1:5000/search', {
+  const response = await axios.post(`${process.env.KEYWORD_ANALYZER_URL}/search`, {
     query
   }, {
     headers: {
