@@ -17,7 +17,7 @@ export async function createUser(userModel) {
         throw new Error(error.message);
     }
 
-    const [createdUser] = await db(tableNames.users).insert({ ...userModel, isAdmin: false }).returning('*');
+    const [createdUser] = await db(tableNames.users).insert({ isAdmin: false, ...userModel }).returning('*');
     return createdUser;
 }
 
