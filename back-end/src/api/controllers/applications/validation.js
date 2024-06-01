@@ -15,7 +15,7 @@ export const applicationCreateSchema = Joi.object({
     url: Joi.string().uri().required(),
     subtitle: Joi.string(),
     description: Joi.string(),
-    labels: Joi.array().items(Joi.string()).optional()
+    labels: Joi.string().optional()
 });
 
 export const applicationUpdateSchema = Joi.object({

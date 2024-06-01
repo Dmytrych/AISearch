@@ -90,7 +90,9 @@ export async function getServiceById(req, res) {
 }
 
 export async function createService(req, res) {
-    const data = await createApplication(req.body, req.attachment)
+    const { labels, ...formData } = req.body;
+    const parsedLabels = labels ? JSON.parse(labels) : []
+    const data = await createApplication({...formData, labels: parsedLabels}, req.attachment)
 
     if (data && data.id) {
       try {
