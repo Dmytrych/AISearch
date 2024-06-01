@@ -79,14 +79,20 @@ export async function getService(req, res) {
 }
 
 export async function getServiceById(req, res) {
-    const data = await findApplication(req.params.applicationId)
+    const application = await findApplication(req.params.applicationId)
 
-    if (!data) {
+    if (!application) {
         res.json({ error: "The application not found" })
         return;
     }
 
-    res.json(data);
+  const applicationsLabels = await getServiceLabels(application);
+
+  res.json(getApplicationClientModel(application, applicationsLabels));
+}
+
+async function getServiceLabels(application) {
+  return await findApplicationsLabels([application.id])
 }
 
 export async function createService(req, res) {
@@ -99,10 +105,13 @@ export async function createService(req, res) {
         await analyze(`${data.name} ${data.subtitle} ${data.description}`, data.id)
       } catch (e) {
         await deleteOneApplication(data.id)
+        throw new Error("Analization failed")
       }
+      res.json(getApplicationClientModel(data, await getServiceLabels(data)))
+      return;
     }
 
-    res.json(data);
+    res.json({error: "Could not create an application"});
 }
 
 export async function deleteApplicationService(req, res) {
