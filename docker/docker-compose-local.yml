@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  app:
+    build: ../back-end/
+    container_name: ai-search-backend
+    environment:
+      - PG_USER=postgres
+      - PG_PASSWORD=postgres
+      - PG_HOST=postgres
+      - PG_DATABASE_NAME=AISearch
+      - PG_PORT=5432
+      - PORT=4000
+      - NODE_ENV=development
+      - KEYWORD_ANALYZER_URL=http://keyword-analyzer:5000
+      - IMAGE_STORAGE_URL=http://image-store:4001/images
+    ports:
+      - '4000:4000'
+    depends_on:
+      - postgres
+      - image-store
+      - keyword-analyzer
+
+  image-store:
+    build: ../image-storage/
+    container_name: image-storage
+    environment:
+      - PG_USER=postgres
+      - PG_PASSWORD=postgres
+      - PG_HOST=postgres
+      - PG_DATABASE_NAME=AISearch
+      - PG_PORT=5432
+      - PORT=4001
+      - NODE_ENV=development
+    ports:
+      - '4001:4001'
+    depends_on:
+      - postgres
+
+  keyword-analyzer:
+    build: ../keyword-analyzer/
+    container_name: keyword-analyzer
+    environment:
+      - DATABASE_URI=postgresql+psycopg2://postgres:postgres@postgres/AISearch
+      - PORT=5000
+    ports:
+      - '5000:5000'
+    depends_on:
+      - postgres
+
+  front-end:
+    build: ../front-end/
+    container_name: front-end
+    environment:
+      - VITE_BASE_URL=http://localhost:4000
+    ports:
+      - "3000:3000"
+
+  postgres:
+    image: postgres:13
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: AISearch
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+volumes:
+  postgres_data:
