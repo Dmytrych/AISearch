@@ -10,4 +10,8 @@ export const API_ROUTES = {
   saveLibrary: '/applications/library/save',
 
   images: '/images',
+
+  labels: '/keyword-analysis/analyze',
+
+  viewItem: '/applications/register-view'
 };

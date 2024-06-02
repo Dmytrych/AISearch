@@ -1,0 +1,77 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+
+# Vite cache
+.vite/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local environment files
+.env.local
+.env.*.local
+
+# MacOS specific files
+.DS_Store
+
+# Editor directories and files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Optional npm cache directory
+.npm
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+
+# Next.js build output
+.next/
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Comment out if you have an ios/ directory in the root of your repository
+# ios/
+
+# Comment out if you have an android/ directory in the root of your repository
+# android/
+
+# Temporary files
+*.swp
+*.swo
+*.tmp
+
+# SvelteKit build output
+.svelte-kit
+
+# Remix build output
+.build/
+
+# Vitest cache
+.vitest/
+
+# Dependencies
+.DS_Store
+node_modules/
+
+# Production
+/build
+
+# Miscellaneous
+*.log
+npm-debug.log*
+yarn-debug.log*
+.pnpm-debug.log*
+lerna-debug.log*

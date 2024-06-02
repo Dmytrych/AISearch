@@ -1,19 +1,27 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { Stack, CardMedia, Typography, Box, Chip, Rating, Divider, Button, TextField, Link, useTheme } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { useNavigate } from 'react-router-dom';
+import debounce from 'lodash.debounce';
+
+import { ItemModal } from 'src/components/ItemModal';
 
 import { setLoading, resetLoading, setErrorBanner, setSuccessBanner } from 'src/context/actions';
 import { useAppContext } from 'src/context/context';
-import { Item } from 'src/types/item';
+import { Item, CreateItemData } from 'src/types/item';
 import { Rate } from 'src/types/rate';
 import { api } from 'src/api';
+import { ROUTES } from 'src/navigation/routes';
 
 export const DetailsPage: React.FC = () => {
   const { state: { user }, dispatch } = useAppContext();
   const { id } = useParams();
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const [item, setItem] = useState<Item>();
   const [rates, setRates] = useState<Rate[]>();
@@ -22,6 +30,14 @@ export const DetailsPage: React.FC = () => {
   const [rate, setRate] = useState<number | null>(0);
 
   const [savedToLibrary, setSavedToLibrary] = useState(false);
+  const [openEditItemModal, setOpenEditItemModal] = useState(false);
+  const [labels, setLabels] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (id) {
+      api.viewItem(id);
+    }
+  }, []);
 
   useEffect(() => {
     const fetchItem = async () => {
@@ -120,6 +136,77 @@ export const DetailsPage: React.FC = () => {
     }
   };
 
+  const handleEditItem = async (data: CreateItemData) => {
+    try {
+      dispatch(setLoading());
+
+      if (!id) {
+        throw new Error();
+      }
+
+      await api.editItem(id, {
+        name: data.name,
+        url: data.url,
+        subtitle: data.subtitle,
+        description: data.description,
+        labels: data.labels,
+      });       
+      const itemResponse = await api.getItem(id);
+      setItem(itemResponse);
+   
+      dispatch(resetLoading());
+      dispatch(setSuccessBanner('Сервіс редагований успішно!'));
+    } catch (e) {
+      dispatch(resetLoading());
+      dispatch(setErrorBanner());
+    }
+  };
+
+  const handleRemoveItem = async () => {
+    try {
+      dispatch(setLoading());
+
+      if (!id) {
+        throw new Error();
+      }
+
+      await api.deleteItem(id);    
+      
+      dispatch(resetLoading());
+
+      navigate(ROUTES.MAIN);
+   
+      dispatch(setSuccessBanner('Сервіс видалений успішно!'));
+    } catch (e) {
+      dispatch(resetLoading());
+      dispatch(setErrorBanner());
+    }
+  };
+
+  const fetchLabels = async (description: string) => {
+    try {
+      dispatch(setLoading());
+
+      const reponse = await api.getLabels({
+        content: description,
+      }) || [];
+      const labels = reponse.map(value => value.keyword);
+
+      setLabels(labels);
+
+      dispatch(resetLoading());
+    } catch (e) {
+      dispatch(resetLoading());
+      dispatch(setErrorBanner());
+    }
+  };
+
+  const debouncedFetchLabels = useCallback(debounce(fetchLabels, 1000), []);
+
+  const removeGeneratedLabel = (label: string) => {
+    setLabels(prevLabels => prevLabels.filter(value => value !== label));
+  }
+
   if (!item) {
     return null;
   }
@@ -129,8 +216,8 @@ export const DetailsPage: React.FC = () => {
 
   return (
     <Stack alignItems="center">
-      <Stack maxWidth="50%">
-        <Stack padding="24px 0" direction="row">
+      <Stack width="50%">
+        <Stack padding="24px 0" direction="row" width="100%" justifyContent="space-between">
           <Box sx={{ paddingRight: '16px' }}>
             <Link href={item.url} target="_blank">
               <Typography variant="h2">
@@ -146,7 +233,7 @@ export const DetailsPage: React.FC = () => {
               {item.description}
             </Typography>
             <Box height="32px" />
-            {item.labels?.length && <Stack direction="row" gap="8px" marginBottom="24px">
+            {!!item.labels?.length && <Stack direction="row" gap="8px" marginBottom="24px" flexWrap="wrap">
               {item.labels?.map(label => (
                 <Chip label={label} variant="outlined" />
               ))}
@@ -163,6 +250,17 @@ export const DetailsPage: React.FC = () => {
                 Дата оновлення: {updatedAtDate.toLocaleDateString()} {updatedAtDate.toLocaleTimeString()}
               </Typography>
             </Stack>
+            {Boolean(user && user.isAdmin) && (
+              <Stack direction="row" gap="8px" mt="24px" flexWrap="wrap">
+                <Button size="small" variant='outlined' startIcon={<EditIcon />} onClick={() => setOpenEditItemModal(true)}>
+                  Редагувати сервіс
+                </Button>
+                <Button size="small" variant='outlined' startIcon={<DeleteIcon />} onClick={handleRemoveItem}>
+                  Видалити сервіс
+                </Button>
+              </Stack>
+             
+            )}
           </Box>
           <Stack gap="24px">
             <CardMedia
@@ -234,6 +332,26 @@ export const DetailsPage: React.FC = () => {
           </Stack>
         ))}
       </Stack>
+      {openEditItemModal && (
+        <ItemModal
+          data={{
+            name: item.name,
+            subtitle: item.subtitle,
+            description: item.description,
+            url: item.url,
+            labels: item.labels || [],
+            image: api.getImageUrl(item.imageName),
+          }}
+          generatedLabels={labels}
+          onClose={() => {
+            setOpenEditItemModal(false);
+            setLabels([]);
+          }} 
+          onSubmit={handleEditItem}
+          onDescriptionChange={debouncedFetchLabels}
+          removeGeneratedLabels={removeGeneratedLabel}
+        />
+      )}
     </Stack>
   );
 };

@@ -1,9 +1,11 @@
 import axios, { AxiosError } from 'axios';
 
-export const BASE_URL = 'http://localhost:4003';
+export const BASE_URL = import.meta.env.VITE_BASE_URL;
+
+console.log(BASE_URL)
 
 const axiosInstance = axios.create({
-  baseURL: BASE_URL, // TODO get from env file
+  baseURL: BASE_URL,
 });
 
 // request interceptors

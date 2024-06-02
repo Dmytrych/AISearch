@@ -48,6 +48,15 @@ services:
     depends_on:
       - postgres
 
+  front-end:
+    build: ../front-end/
+    container_name: front-end
+    environment:
+      - VITE_BASE_URL=https://aisearch.fun/api/
+      - NODE_ENV=production
+    ports:
+      - "3000:3000"
+
   postgres:
     image: postgres:13
     container_name: postgres

@@ -22,6 +22,15 @@ type RateBody = {
   comment?: string; 
 }
 
+type GenerateLabelsBody = {
+  content: string;
+}
+
+type GeneratedLabel = {
+  keyword: string; 
+  score: number;
+}
+
 export const api = {
   login: (body: LoginBody): Promise<User> => axiosInstance.post(API_ROUTES.login, body),
   register: (body: RegisterBody) => axiosInstance.post(API_ROUTES.register, body),
@@ -29,6 +38,11 @@ export const api = {
   getLibrary: (): Promise<Item[]> => axiosInstance.get(API_ROUTES.library),
   saveToLibrary: (id: string) => axiosInstance.post(`${API_ROUTES.saveLibrary}/${id}`),
   deleteFromLibrary: (id: string) => axiosInstance.delete(`${API_ROUTES.library}/${id}`),
+
+  addItem: (body: FormData) => axiosInstance.post(API_ROUTES.items, body),
+  editItem: (id: string, body: Partial<Item>) => axiosInstance.put(`${API_ROUTES.items}/${id}`, body),
+  deleteItem: (id: string) => axiosInstance.delete(`${API_ROUTES.items}/${id}`),
+  viewItem: (id: string) =>  axiosInstance.post(`${API_ROUTES.viewItem}/${id}`),
 
   getItems: (): Promise<Item[]> => axiosInstance.get(API_ROUTES.items),
   getItem: (id: string): Promise<Item> => axiosInstance.get(`${API_ROUTES.items}/${id}`),
@@ -39,4 +53,6 @@ export const api = {
 
   getProfile: (): Promise<User> => axiosInstance.get(API_ROUTES.profile),
   editProfile: (body: Partial<RegisterBody>): Promise<User> => axiosInstance.put(API_ROUTES.profile, body),
+
+  getLabels: (body: GenerateLabelsBody): Promise<Array<GeneratedLabel>> => axiosInstance.post(API_ROUTES.labels, body),
 };

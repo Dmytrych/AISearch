@@ -2,24 +2,26 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { Card, Stack, CardMedia, Typography, Box, Chip, FormControl, OutlinedInput, InputAdornment, ButtonGroup, Rating } from '@mui/material';
+import { Card, Stack, CardMedia, Typography, Box, Chip, FormControl, OutlinedInput, InputAdornment, ButtonGroup, Rating, Button } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import debounce from 'lodash.debounce';
 import { Link } from 'react-router-dom';
 
-import { setLoading, resetLoading, setErrorBanner } from 'src/context/actions';
+import { setLoading, resetLoading, setErrorBanner, setSuccessBanner } from 'src/context/actions';
 import { useAppContext } from 'src/context/context';
 import { delay } from 'src/utils/delay';
-import { Item } from 'src/types/item';
+import { CreateItemData, Item } from 'src/types/item';
 import { ROUTES } from 'src/navigation/routes';
 import { api } from 'src/api';
+
+import { ItemModal } from 'src/components/ItemModal';
 
 // import { mockItems } from './mock';
 import { sortItems, filterItems } from './utils';
 import { SortButton } from './SortButton';
 
 export const MainPage: React.FC = () => {
-  const { dispatch } = useAppContext();
+  const { state: { user }, dispatch } = useAppContext();
 
   const [items, setItems] = useState<Item[]>([]);
   const [initItems, setInitItems] = useState<Item[]>([]);
@@ -79,6 +81,61 @@ export const MainPage: React.FC = () => {
 
     setItems(sortedItems);
     dispatch(resetLoading());
+  }
+
+  // DATA RELATED TO ADD ITEM MODAL
+  const [openAddItemModal, setAddItemModal] = useState(false);
+  const [labels, setLabels] = useState<string[]>([]);
+
+  const handleAddItemSubmit = async (data: CreateItemData) => {
+    const formData = new FormData();
+    formData.append('name', data.name);
+    formData.append('url', data.url);
+    formData.append('subtitle', data.subtitle);
+    formData.append('description', data.description);
+    formData.append('labels', JSON.stringify(data.labels));
+    if (data.image) {
+      formData.append('image', data.image);
+    }
+    
+    try {
+      dispatch(setLoading());
+
+      await api.addItem(formData);       
+      const response = await api.getItems();       
+      setItems(response);
+      setInitItems(response);
+
+      dispatch(resetLoading());
+      dispatch(setSuccessBanner('Новий сервіс доданий успішно!'));
+    } catch (e) {
+      dispatch(resetLoading());
+      dispatch(setErrorBanner());
+    }
+  };
+
+  const fetchLabels = async (description: string) => {
+    try {
+      dispatch(setLoading());
+
+      const reponse = await api.getLabels({
+        content: description,
+      }) || [];
+      const labels = reponse.map(value => value.keyword);
+
+      setLabels(labels);
+
+      dispatch(resetLoading());
+    } catch (e) {
+      dispatch(resetLoading());
+      dispatch(setErrorBanner());
+    }
+  };
+
+  const debouncedFetchLabels = useCallback(debounce(fetchLabels, 1000), []);
+
+  const removeGeneratedLabel = (label: string) => {
+    setLabels(prevLabels => prevLabels.filter(value => value !== label));
   }
 
   return (
@@ -150,6 +207,11 @@ export const MainPage: React.FC = () => {
             />
           </ButtonGroup>
         </Stack>
+        {Boolean(user && user.isAdmin) && (
+          <Button variant='outlined' onClick={() => setAddItemModal(true)}>
+            + Додати сервіс 
+          </Button>
+        )}
       </Stack>
       <Box height="24px" />
       <Stack direction="row" alignItems="center" justifyContent="center" gap="24px" flexWrap="wrap" margin="24px">
@@ -186,6 +248,18 @@ export const MainPage: React.FC = () => {
           </Card>
         ))}
       </Stack>
+      {openAddItemModal && (
+        <ItemModal
+          generatedLabels={labels}
+          onClose={() => {
+            setAddItemModal(false);
+            setLabels([]);
+          }} 
+          onSubmit={handleAddItemSubmit}
+          onDescriptionChange={debouncedFetchLabels}
+          removeGeneratedLabels={removeGeneratedLabel}
+        />
+      )}
     </>
   );
 };
