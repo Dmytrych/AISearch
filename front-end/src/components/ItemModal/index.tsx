@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import { Button, Typography, Modal, Stack, IconButton, TextField, Chip, Tooltip } from '@mui/material';
 import { useDropzone, FileRejection } from 'react-dropzone';
