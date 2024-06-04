@@ -18,4 +18,4 @@ COPY . .
 EXPOSE 4000
 
 # Command to run the database migrations and then start the application
-CMD ["sh", "-c", "npm run db:migrate && npm start"]
+CMD ["sh", "-c", "npm start"]
