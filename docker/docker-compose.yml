@@ -64,9 +64,9 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: AISearch
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_volume:/var/lib/postgresql/data
     ports:
       - '5432:5432'
 
 volumes:
-  postgres_data:
+  postgres_volume:
