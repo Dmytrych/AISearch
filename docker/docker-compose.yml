@@ -17,9 +17,12 @@ services:
     ports:
       - '4000:4000'
     depends_on:
-      - postgres
-      - image-store
-      - keyword-analyzer
+      postgres:
+        condition: service_healthy
+      image-store:
+        condition: service_started
+      keyword-analyzer:
+        condition: service_started
 
   image-store:
     build: ../image-storage/
@@ -35,7 +38,8 @@ services:
     ports:
       - '4001:4001'
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
 
   keyword-analyzer:
     build: ../keyword-analyzer/
@@ -50,7 +54,8 @@ services:
     ports:
       - '5000:5000'
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
 
   front-end:
     build: ../front-end/
@@ -71,6 +76,11 @@ services:
       - postgres_volume:/var/lib/postgresql/data
     ports:
       - '5432:5432'
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   postgres_volume:
