@@ -47,6 +47,9 @@ module.exports = {
         return `${+new Date()}-${name}.js`;
       },
     },
+    seeds: {
+      directory: path.join(__dirname, '/src/database/seeds'),
+    },
     pool: {
       min: 2,
       max: 10

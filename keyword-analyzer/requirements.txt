@@ -1,5 +1,6 @@
 scikit-learn
 sqlalchemy
+sqlalchemy-utils
 psycopg2-binary
 nltk
 numpy
