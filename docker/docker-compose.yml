@@ -41,12 +41,12 @@ services:
     build: ../keyword-analyzer/
     container_name: keyword-analyzer
     environment:
-      - DATABASE_URI=postgresql+psycopg2://postgres:postgres@postgres_analyze/AISearchAnalyze
+      - DATABASE_URI=postgresql+psycopg2://postgres:postgres@postgres_analyze:5433/AISearchAnalyze
       - PORT=5000
     ports:
       - '5000:5000'
     depends_on:
-      - postgres
+      - postgres_analyze
 
   front-end:
     build: ../front-end/
@@ -76,7 +76,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: AISearchAnalyze
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data_1:/var/lib/postgresql/data
     ports:
       - '5433:5432'
 
