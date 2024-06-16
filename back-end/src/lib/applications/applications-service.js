@@ -117,6 +117,8 @@ export async function createService(req, res) {
 export async function deleteApplicationService(req, res) {
     const data = await deleteOneApplication(req.params.applicationId)
 
+    await remove(req.params.applicationId)
+
     res.json(data);
 }
 
@@ -210,6 +212,20 @@ export async function analyze(content, applicationId) {
   if (!response || response.status !== 200) {
     throw new Error("Failed to create");
   }
+}
+
+export async function remove(content, applicationId) {
+    try {
+        await axios.post(`${process.env.KEYWORD_ANALYZER_URL}/remove`, {
+            externalId: applicationId
+        }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+    } catch (e) {
+        console.log("Deletion error")
+    }
 }
 
 export async function findByName(query) {

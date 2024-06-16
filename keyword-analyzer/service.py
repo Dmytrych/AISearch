@@ -101,6 +101,8 @@ def search_documents(session, query):
     if not preprocessed_query:
         return []
 
+    print(preprocessed_query)
+
     # Extract keywords for the query
     query_keywords = extract_keywords(preprocessed_query)
 

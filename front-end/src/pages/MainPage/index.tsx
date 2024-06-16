@@ -38,8 +38,8 @@ export const MainPage: React.FC = () => {
     try {
       dispatch(setLoading());
       const response = await api.getItems({
-        name: currentNameSearch?.length ? currentNameSearch : undefined,
-        labels: currentLabelSearch?.length ? [currentLabelSearch] : undefined
+        name: currentNameSearch?.length && currentNameSearch?.length > 2 ? currentNameSearch : undefined,
+        labels: currentLabelSearch?.length && currentNameSearch?.length > 1 ? [currentLabelSearch] : undefined
       });
 
       const sorted = sortBy ? sortItems(sortBy, response) : response;
