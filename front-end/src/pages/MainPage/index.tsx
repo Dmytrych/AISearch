@@ -17,58 +17,56 @@ import { api } from 'src/api';
 import { ItemModal } from 'src/components/ItemModal';
 
 // import { mockItems } from './mock';
-import { sortItems, filterItems } from './utils';
+import { sortItems } from './utils';
 import { SortButton } from './SortButton';
 
 export const MainPage: React.FC = () => {
   const { state: { user }, dispatch } = useAppContext();
 
   const [items, setItems] = useState<Item[]>([]);
-  const [initItems, setInitItems] = useState<Item[]>([]);
   const [nameSearch, setNameSearch] = useState('');
   const [labelSearch, setLabelSearch] = useState('');
   const [sortBy, setSortBy] = useState('');
 
   useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        dispatch(setLoading());
-        const response = await api.getItems();       
-        setItems(response);
-        setInitItems(response);
-        dispatch(resetLoading());
-      } catch (e) {
-        dispatch(resetLoading());
-        dispatch(setErrorBanner());
-      }
-    };
-
-    fetchItems();
+    if(!items?.length) {
+      fetchItems(nameSearch, labelSearch);
+    }
   }, []);
 
-  const asyncSearchItems = async (currNameSearch: string, currLabelSearch: string, items: Item[]) => {
-    dispatch(setLoading());
+  const fetchItems = async (currentNameSearch: string, currentLabelSearch: string) => {
+    try {
+      dispatch(setLoading());
+      const response = await api.getItems({
+        name: currentNameSearch?.length ? currentNameSearch : undefined,
+        labels: currentLabelSearch?.length ? [currentLabelSearch] : undefined
+      });
 
-    const searched = filterItems(currNameSearch, currLabelSearch, items);
-    const sorted = sortBy ? sortItems(sortBy, searched) : searched;
+      const sorted = sortBy ? sortItems(sortBy, response) : response;
+
+      setItems(sorted);
+      dispatch(resetLoading());
+    } catch (e) {
+      dispatch(resetLoading());
+      dispatch(setErrorBanner());
+    }
 
     await delay(500);
-    setItems(sorted);
     dispatch(resetLoading());
-  };
+  }
 
-  const debouncedSearch = useCallback(debounce(asyncSearchItems, 300), []);
+  const debouncedSearch = useCallback(debounce(fetchItems, 300), []);
 
   const handleNameSearchChage = (e: any) => {
     setNameSearch(e.target.value);
     
-    debouncedSearch(e.target.value, labelSearch, initItems);
+    debouncedSearch(e.target.value, labelSearch);
   };
 
   const handleLabelSearchChange = (e: any) => {
     setLabelSearch(e.target.value);
 
-    debouncedSearch(nameSearch, e.target.value, initItems);
+    debouncedSearch(nameSearch, e.target.value);
   };
 
   const handleSortByClick = async (type: string) => {
@@ -101,13 +99,11 @@ export const MainPage: React.FC = () => {
     try {
       dispatch(setLoading());
 
-      await api.addItem(formData);       
-      const response = await api.getItems();       
-      setItems(response);
-      setInitItems(response);
+      await api.addItem(formData);
+      await fetchItems(nameSearch, labelSearch);
 
-      dispatch(resetLoading());
       dispatch(setSuccessBanner('Новий сервіс доданий успішно!'));
+      dispatch(resetLoading());
     } catch (e) {
       dispatch(resetLoading());
       dispatch(setErrorBanner());

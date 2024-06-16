@@ -222,8 +222,11 @@ export async function findByName(query) {
   });
 
   if (!response || response.status !== 200) {
-    throw new Error("Failed to find");
+    console.log("Error happened");
+    return [];
   }
+
+  console.log(`Data: ${JSON.stringify(response.data)}`)
 
   return response.data
 }

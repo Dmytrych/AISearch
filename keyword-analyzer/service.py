@@ -65,7 +65,11 @@ def extract_keywords_service_call(document):
     keywords = extract_keywords(preprocessed_text)
     return {'document': preprocessed_text, 'keywords': keywords}
 
+
 def extract_keywords(preprocessed_text):
+    if not preprocessed_text:
+        return []
+
     tfidf_matrix = vectorizer.fit_transform([preprocessed_text])
     tfidf_scores = tfidf_matrix.toarray().flatten()
     feature_names = vectorizer.get_feature_names_out()
@@ -90,15 +94,24 @@ def get_tfidf_results(session, document_id):
 
 
 def search_documents(session, query):
-    documents = session.query(Document).all()
+    # Preprocess the query
+    preprocessed_query = preprocess_text(query)
+
+    # Check if the query is empty after preprocessing
+    if not preprocessed_query:
+        return []
 
     # Extract keywords for the query
-    preprocessed_query = preprocess_text(query)
     query_keywords = extract_keywords(preprocessed_query)
+
+    # Return empty if query has no valid keywords
+    if not query_keywords:
+        return []
 
     # Vectorize query keywords
     query_vector = vectorize_keywords(query_keywords)
 
+    documents = session.query(Document).all()
     results = []
     for document in documents:
         # Get stored keywords for the document
@@ -107,7 +120,9 @@ def search_documents(session, query):
 
         # Calculate cosine similarity between query and document vectors
         similarity = cosine_similarity([query_vector], [document_vector])[0][0]
-        results.append({'document_id': document.id, 'externalId': document.externalId, 'similarity': similarity})
+
+        if similarity > 0:  # Only include documents with a similarity score greater than 0
+            results.append({'document_id': document.id, 'externalId': document.externalId, 'similarity': similarity})
 
     # Get the top N most similar documents
     N = 100
@@ -124,4 +139,3 @@ def vectorize_keywords(keywords):
         if feature in keyword_dict:
             vector[i] = keyword_dict[feature]
     return vector
-
