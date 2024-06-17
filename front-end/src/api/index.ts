@@ -31,6 +31,11 @@ type GeneratedLabel = {
   score: number;
 }
 
+type ItemFilterQuery = {
+  name?: string;
+  labels?: string[];
+}
+
 export const api = {
   login: (body: LoginBody): Promise<User> => axiosInstance.post(API_ROUTES.login, body),
   register: (body: RegisterBody) => axiosInstance.post(API_ROUTES.register, body),
@@ -44,7 +49,9 @@ export const api = {
   deleteItem: (id: string) => axiosInstance.delete(`${API_ROUTES.items}/${id}`),
   viewItem: (id: string) =>  axiosInstance.post(`${API_ROUTES.viewItem}/${id}`),
 
-  getItems: (): Promise<Item[]> => axiosInstance.get(API_ROUTES.items),
+  getItems: (query?: ItemFilterQuery): Promise<Item[]> => axiosInstance.get(API_ROUTES.items, {
+    params: query
+  }),
   getItem: (id: string): Promise<Item> => axiosInstance.get(`${API_ROUTES.items}/${id}`),
   rateItem: (body: RateBody) => axiosInstance.post(API_ROUTES.rate, body),
   getItemRates: (id: string): Promise<Rate[]> => axiosInstance.get(`${API_ROUTES.getRate}/${id}`),

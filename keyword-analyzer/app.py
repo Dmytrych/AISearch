@@ -1,11 +1,9 @@
 import os
-
 from flask import Flask, request, jsonify
-from database import Session as DBSession
+from database import Session as DBSession, Document, Keyword
 from service import store_tfidf_results, get_tfidf_results, search_documents, extract_keywords_service_call
 
 app = Flask(__name__)
-
 
 @app.route('/analyze', methods=['POST'])
 def analyze_document():
@@ -19,7 +17,6 @@ def analyze_document():
     response = extract_keywords_service_call(document_content)
 
     return jsonify(response)
-
 
 @app.route('/store', methods=['POST'])
 def store_document():
@@ -40,8 +37,6 @@ def store_document():
 
     return jsonify(results)
 
-
-
 @app.route('/search', methods=['POST'])
 def search():
     data = request.json
@@ -60,6 +55,40 @@ def search():
     session.close()
 
     return jsonify(results)
+
+def remove_document_by_externalId(session, externalId):
+    # Find the document by externalId
+    document = session.query(Document).filter(Document.externalId == externalId).first()
+    if not document:
+        return False
+
+    # Delete keywords associated with the document
+    session.query(Keyword).filter(Keyword.document_id == document.id).delete()
+
+    # Delete the document
+    session.delete(document)
+    session.commit()
+    return True
+
+@app.route('/remove', methods=['POST'])
+def remove_document():
+    data = request.json
+    externalId = data.get('externalId')
+
+    if not externalId:
+        return jsonify({'error': 'No externalId provided'}), 400
+
+    session = DBSession()
+
+    # Remove the document by externalId
+    success = remove_document_by_externalId(session, externalId)
+
+    session.close()
+
+    if not success:
+        return jsonify({'error': 'Document not found'}), 404
+
+    return jsonify({'message': 'Document removed successfully'})
 
 PORT = os.getenv('PORT', '5000')
 
