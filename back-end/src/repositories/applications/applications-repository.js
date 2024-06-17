@@ -28,7 +28,8 @@ export async function createApplication(model) {
     const { error } = applicationCreateSchema.validate(model);
 
     if (error) {
-        throw new Error('Invalid model given ')
+        console.log(JSON.stringify(error))
+        throw new Error('Invalid model given')
     }
 
     const [createdModel] = await applicationsTable().insert(model).returning('*');

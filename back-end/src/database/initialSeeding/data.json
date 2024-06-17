@@ -1,0 +1,1006 @@
+{
+  "applications": [
+    {
+      "id": 1,
+      "name": "DALL-E",
+      "url": "https://openai.com/dall-e-2/",
+      "subtitle": "Генерація зображень за текстовими описами",
+      "description": "Модель від OpenAI для створення зображень на основі текстових описів.",
+      "createdAt": "2024-06-17T17:00:36Z",
+      "updatedAt": "2024-06-17T17:00:36Z",
+      "imageId": 1,
+      "imageName": "dalle.png",
+      "rating": 4,
+      "views": 500,
+      "saves": 200,
+      "ratedCount": 150,
+      "labels": ["Генерація зображень", "OpenAI", "Текст до зображення", "Зображення"],
+      "comments": [
+        {
+          "userId": 1,
+          "rated": 4,
+          "comment": "Чудово створює зображення за описом, але іноді потрібні доопрацювання."
+        },
+        {
+          "userId": 2,
+          "rated": 5,
+          "comment": "Неймовірна якість зображень! Дуже задоволений."
+        },
+        {
+          "userId": 3,
+          "rated": 3,
+          "comment": "Деколи результати не співпадають з очікуваннями."
+        },
+        {
+          "userId": 4,
+          "rated": 4,
+          "comment": "Швидко генерує зображення, але бувають неточності."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Grammarly",
+      "url": "https://grammarly.com",
+      "subtitle": "Інструмент для перевірки граматики та стилю",
+      "description": "Сервіс для перевірки та виправлення граматики, стилю та орфографії в текстах.",
+      "createdAt": "2024-06-17T17:00:36Z",
+      "updatedAt": "2024-06-17T17:00:36Z",
+      "imageId": 2,
+      "imageName": "grammarly.png",
+      "rating": 5,
+      "views": 1000,
+      "saves": 600,
+      "ratedCount": 500,
+      "labels": ["Граматика", "Перевірка тексту", "Редагування", "Стиль", "Виправлення орфографії"],
+      "comments": [
+        {
+          "userId": 5,
+          "rated": 5,
+          "comment": "Незамінний інструмент для написання текстів."
+        },
+        {
+          "userId": 6,
+          "rated": 5,
+          "comment": "Дуже допомагає в роботі з текстами."
+        },
+        {
+          "userId": 7,
+          "rated": 4,
+          "comment": "Інколи робить помилки, але загалом дуже корисний."
+        },
+        {
+          "userId": 8,
+          "rated": 5,
+          "comment": "Чудово виправляє помилки та покращує стиль написання."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "DeepArt",
+      "url": "https://deepart.io",
+      "subtitle": "Генерація художніх зображень",
+      "description": "Інструмент для створення художніх зображень на основі ваших фото.",
+      "createdAt": "2024-06-17T17:00:36Z",
+      "updatedAt": "2024-06-17T17:00:36Z",
+      "imageId": 3,
+      "imageName": "deepart.png",
+      "rating": 4,
+      "views": 300,
+      "saves": 150,
+      "ratedCount": 120,
+      "labels": ["Генерація зображень", "Художні зображення", "Штучний інтелект"],
+      "comments": [
+        {
+          "userId": 9,
+          "rated": 4,
+          "comment": "Дуже красиво виходить, але не завжди швидко."
+        },
+        {
+          "userId": 10,
+          "rated": 3,
+          "comment": "Потребує покращень, але ідея чудова."
+        },
+        {
+          "userId": 11,
+          "rated": 5,
+          "comment": "Відмінний сервіс для створення мистецтва!"
+        },
+        {
+          "userId": 12,
+          "rated": 4,
+          "comment": "Чудові результати, але часом треба чекати."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Copy.ai",
+      "url": "https://copy.ai",
+      "subtitle": "Автоматизований копірайтинг",
+      "description": "Сервіс для створення текстів на основі штучного інтелекту.",
+      "createdAt": "2024-06-17T17:00:36Z",
+      "updatedAt": "2024-06-17T17:00:36Z",
+      "imageId": 4,
+      "imageName": "copyai.png",
+      "rating": 4,
+      "views": 600,
+      "saves": 250,
+      "ratedCount": 200,
+      "labels": ["Копірайтинг", "Автоматизація", "Штучний інтелект", "Текст"],
+      "comments": [
+        {
+          "userId": 13,
+          "rated": 4,
+          "comment": "Швидко генерує тексти, але інколи потребують редагування."
+        },
+        {
+          "userId": 14,
+          "rated": 5,
+          "comment": "Неймовірний інструмент для копірайтингу!"
+        },
+        {
+          "userId": 15,
+          "rated": 3,
+          "comment": "Не завжди виходить те, що потрібно."
+        },
+        {
+          "userId": 16,
+          "rated": 4,
+          "comment": "Дуже корисний сервіс, економить час."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "FaceApp",
+      "url": "https://faceapp.com",
+      "subtitle": "Редагування фото з використанням ШІ",
+      "description": "Додаток для редагування фото з використанням штучного інтелекту.",
+      "createdAt": "2024-06-17T17:00:36Z",
+      "updatedAt": "2024-06-17T17:00:36Z",
+      "imageId": 5,
+      "imageName": "faceapp.png",
+      "rating": 4,
+      "views": 800,
+      "saves": 400,
+      "ratedCount": 350,
+      "labels": ["Редагування фото", "Штучний інтелект", "Фото"],
+      "comments": [
+        {
+          "userId": 17,
+          "rated": 4,
+          "comment": "Чудово змінює фото, але деякі фільтри не дуже."
+        },
+        {
+          "userId": 18,
+          "rated": 5,
+          "comment": "Дуже подобається, багато цікавих можливостей!"
+        },
+        {
+          "userId": 19,
+          "rated": 3,
+          "comment": "Деколи результати виглядають ненатурально."
+        },
+        {
+          "userId": 20,
+          "rated": 4,
+          "comment": "Швидко і легко редагує фото, зручно користуватись."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Jasper",
+      "url": "https://jasper.ai",
+      "subtitle": "Інструмент для автоматизованого створення контенту",
+      "description": "Сервіс для генерації контенту на основі штучного інтелекту.",
+      "createdAt": "2024-06-17T17:00:36Z",
+      "updatedAt": "2024-06-17T17:00:36Z",
+      "imageId": 6,
+      "imageName": "jasper.png",
+      "rating": 5,
+      "views": 700,
+      "saves": 350,
+      "ratedCount": 300,
+      "labels": ["Контент", "Генерація тексту", "Штучний інтелект", "Автоматизація"],
+      "comments": [
+        {
+          "userId": 21,
+          "rated": 5,
+          "comment": "Дуже корисний для створення контенту швидко і якісно."
+        },
+        {
+          "userId": 22,
+          "rated": 4,
+          "comment": "Інколи потребує редагування, але загалом чудово."
+        },
+        {
+          "userId": 23,
+          "rated": 5,
+          "comment": "Задоволений сервісом на всі 100%!"
+        },
+        {
+          "userId": 24,
+          "rated": 4,
+          "comment": "Швидко генерує тексти, економить багато часу."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Synthesia",
+      "url": "https://synthesia.io",
+      "subtitle": "Генерація відео з використанням ШІ",
+      "description": "Сервіс для створення відео на основі текстових скриптів з використанням штучного інтелекту.",
+      "createdAt": "2024-06-17T17:00:36Z",
+      "updatedAt": "2024-06-17T17:00:36Z",
+      "imageId": 7,
+      "imageName": "synthesia.png",
+      "rating": 5,
+      "views": 650,
+      "saves": 300,
+      "ratedCount": 250,
+      "labels": ["Генерація відео", "Штучний інтелект", "Текст до відео"],
+      "comments": [
+        {
+          "userId": 25,
+          "rated": 5,
+          "comment": "Неймовірно зручно для створення відео."
+        },
+        {
+          "userId": 26,
+          "rated": 4,
+          "comment": "Дуже добре працює, але є деякі недоліки."
+        },
+        {
+          "userId": 27,
+          "rated": 5,
+          "comment": "Чудовий сервіс для генерації відео контенту."
+        },
+        {
+          "userId": 28,
+          "rated": 5,
+          "comment": "Швидко і легко створює відео на основі тексту."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Replika",
+      "url": "https://replika.ai",
+      "subtitle": "Віртуальний друг з штучним інтелектом",
+      "description": "Додаток для створення віртуального друга, що спілкується з вами за допомогою ШІ.",
+      "createdAt": "2024-06-17T17:00:36Z",
+      "updatedAt": "2024-06-17T17:00:36Z",
+      "imageId": 8,
+      "imageName": "replika.png",
+      "rating": 4,
+      "views": 400,
+      "saves": 200,
+      "ratedCount": 150,
+      "labels": ["Віртуальний друг", "Чат-бот", "Штучний інтелект"],
+      "comments": [
+        {
+          "userId": 29,
+          "rated": 4,
+          "comment": "Чудовий сервіс, допомагає спілкуватись."
+        },
+        {
+          "userId": 30,
+          "rated": 5,
+          "comment": "Неймовірно корисний для тих, хто шукає спілкування."
+        },
+        {
+          "userId": 31,
+          "rated": 3,
+          "comment": "Інколи спілкування виглядає неприродно."
+        },
+        {
+          "userId": 32,
+          "rated": 4,
+          "comment": "Добре працює, але є місце для покращень."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "OpenAI Codex",
+      "url": "https://openai.com/codex",
+      "subtitle": "Генерація коду з використанням ШІ",
+      "description": "Модель від OpenAI для генерації коду на основі текстових запитів.",
+      "createdAt": "2024-06-17T17:00:36Z",
+      "updatedAt": "2024-06-17T17:00:36Z",
+      "imageId": 9,
+      "imageName": "codex.png",
+      "rating": 5,
+      "views": 750,
+      "saves": 400,
+      "ratedCount": 350,
+      "labels": ["Генерація коду", "Програмування", "OpenAI", "Штучний інтелект"],
+      "comments": [
+        {
+          "userId": 33,
+          "rated": 5,
+          "comment": "Дуже допомагає в роботі програмістом."
+        },
+        {
+          "userId": 34,
+          "rated": 4,
+          "comment": "Чудовий інструмент, але інколи робить помилки."
+        },
+        {
+          "userId": 35,
+          "rated": 5,
+          "comment": "Неймовірно корисний для генерації коду."
+        },
+        {
+          "userId": 36,
+          "rated": 5,
+          "comment": "Задоволений результатами, швидко і якісно."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "ChatGPT",
+      "url": "https://chatgpt.com",
+      "subtitle": "Чат з генеративним штучним інтелектом",
+      "description": "Великий мовний модельний агент, розроблений OpenAI, що базується на архітектурі GPT-4.",
+      "createdAt": "2024-06-17T17:00:36Z",
+      "updatedAt": "2024-06-17T17:00:36Z",
+      "imageId": 10,
+      "imageName": "chatgpt.png",
+      "rating": 5,
+      "views": 1000,
+      "saves": 600,
+      "ratedCount": 550,
+      "labels": ["Чат-бот", "Генеративний ШІ", "OpenAI", "Мовна модель"],
+      "comments": [
+        {
+          "userId": 37,
+          "rated": 5,
+          "comment": "Чудовий помічник у вирішенні задач."
+        },
+        {
+          "userId": 38,
+          "rated": 4,
+          "comment": "Деколи відповіді неточні, але загалом добре."
+        },
+        {
+          "userId": 39,
+          "rated": 5,
+          "comment": "Відмінний сервіс для навчання та роботи."
+        },
+        {
+          "userId": 40,
+          "rated": 5,
+          "comment": "Дуже допомагає у вирішенні складних питань."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "MidJourney",
+      "url": "https://www.midjourney.com",
+      "subtitle": "Генерація зображень на основі тексту",
+      "description": "Сервіс для створення зображень на основі текстових описів за допомогою штучного інтелекту.",
+      "createdAt": "2024-06-17T17:00:36Z",
+      "updatedAt": "2024-06-17T17:00:36Z",
+      "imageId": 11,
+      "imageName": "midjourney.png",
+      "rating": 5,
+      "views": 800,
+      "saves": 450,
+      "ratedCount": 400,
+      "labels": ["Генерація зображень", "Штучний інтелект", "Текст до зображення"],
+      "comments": [
+        {
+          "userId": 1,
+          "rated": 5,
+          "comment": "Фантастичні результати! Дуже задоволений."
+        },
+        {
+          "userId": 2,
+          "rated": 4,
+          "comment": "Чудовий сервіс, але інколи потрібні корекції."
+        },
+        {
+          "userId": 3,
+          "rated": 5,
+          "comment": "Дуже якісні зображення за мінімум часу."
+        },
+        {
+          "userId": 4,
+          "rated": 4,
+          "comment": "Швидко генерує, але хотілось би більше налаштувань."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Lumen5",
+      "url": "https://lumen5.com",
+      "subtitle": "Інструмент для створення відео",
+      "description": "Сервіс для створення відео на основі статей та текстів з використанням штучного інтелекту.",
+      "createdAt": "2024-06-17T17:00:36Z",
+      "updatedAt": "2024-06-17T17:00:36Z",
+      "imageId": 12,
+      "imageName": "lumen5.png",
+      "rating": 4,
+      "views": 500,
+      "saves": 300,
+      "ratedCount": 250,
+      "labels": ["Генерація відео", "Штучний інтелект", "Текст до відео", "Маркетинг"],
+      "comments": [
+        {
+          "userId": 5,
+          "rated": 4,
+          "comment": "Дуже зручно для створення маркетингових відео."
+        },
+        {
+          "userId": 6,
+          "rated": 4,
+          "comment": "Швидко генерує відео, але іноді потрібне редагування."
+        },
+        {
+          "userId": 7,
+          "rated": 5,
+          "comment": "Чудовий інструмент для створення відеоконтенту!"
+        },
+        {
+          "userId": 8,
+          "rated": 3,
+          "comment": "Інколи результати не виправдовують очікування."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "RunwayML",
+      "url": "https://runwayml.com",
+      "subtitle": "Інструменти для креативного використання ШІ",
+      "description": "Сервіс, що пропонує різноманітні інструменти для роботи з мультимедіа за допомогою штучного інтелекту.",
+      "createdAt": "2024-06-17T17:00:36Z",
+      "updatedAt": "2024-06-17T17:00:36Z",
+      "imageId": 13,
+      "imageName": "runwayml.png",
+      "rating": 5,
+      "views": 700,
+      "saves": 400,
+      "ratedCount": 350,
+      "labels": ["Креатив", "Штучний інтелект", "Мультимедіа", "Генерація"],
+      "comments": [
+        {
+          "userId": 9,
+          "rated": 5,
+          "comment": "Відмінні інструменти для креативного процесу."
+        },
+        {
+          "userId": 10,
+          "rated": 4,
+          "comment": "Дуже зручно, але потрібен час для освоєння."
+        },
+        {
+          "userId": 1,
+          "rated": 5,
+          "comment": "Широкий функціонал і простота використання!"
+        },
+        {
+          "userId": 6,
+          "rated": 4,
+          "comment": "Чудовий сервіс для креативних професіоналів."
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Descript",
+      "url": "https://descript.com",
+      "subtitle": "Редагування аудіо та відео з використанням ШІ",
+      "description": "Сервіс для редагування аудіо та відео з використанням штучного інтелекту.",
+      "createdAt": "2024-06-17T17:00:36Z",
+      "updatedAt": "2024-06-17T17:00:36Z",
+      "imageId": 14,
+      "imageName": "descript.png",
+      "rating": 4,
+      "views": 650,
+      "saves": 350,
+      "ratedCount": 300,
+      "labels": ["Редагування відео", "Редагування аудіо", "Штучний інтелект"],
+      "comments": [
+        {
+          "userId": 3,
+          "rated": 4,
+          "comment": "Дуже зручно для редагування подкастів та відео."
+        },
+        {
+          "userId": 4,
+          "rated": 5,
+          "comment": "Відмінний інструмент, економить багато часу."
+        },
+        {
+          "userId": 5,
+          "rated": 4,
+          "comment": "Чудово працює, але бувають збої."
+        },
+        {
+          "userId": 6,
+          "rated": 5,
+          "comment": "Найкращий сервіс для редагування аудіо та відео!"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Talkwalker",
+      "url": "https://talkwalker.com",
+      "subtitle": "Аналіз соціальних медіа з використанням ШІ",
+      "description": "Сервіс для моніторингу та аналізу соціальних медіа з використанням штучного інтелекту.",
+      "createdAt": "2024-06-17T17:00:36Z",
+      "updatedAt": "2024-06-17T17:00:36Z",
+      "imageId": 15,
+      "imageName": "talkwalker.png",
+      "rating": 5,
+      "views": 600,
+      "saves": 320,
+      "ratedCount": 270,
+      "labels": ["Соціальні медіа", "Аналіз даних", "Штучний інтелект", "Маркетинг"],
+      "comments": [
+        {
+          "userId": 7,
+          "rated": 5,
+          "comment": "Відмінний сервіс для моніторингу соцмереж."
+        },
+        {
+          "userId": 7,
+          "rated": 4,
+          "comment": "Дуже допомагає в аналізі даних."
+        },
+        {
+          "userId": 3,
+          "rated": 5,
+          "comment": "Чудовий інструмент для маркетингу."
+        },
+        {
+          "userId": 6,
+          "rated": 4,
+          "comment": "Добре працює, але є місце для покращень."
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Aiva",
+      "url": "https://aiva.ai",
+      "subtitle": "Генерація музики з використанням ШІ",
+      "description": "Сервіс для створення музичних композицій за допомогою штучного інтелекту.",
+      "createdAt": "2024-06-17T17:00:36Z",
+      "updatedAt": "2024-06-17T17:00:36Z",
+      "imageId": 16,
+      "imageName": "aiva.png",
+      "rating": 5,
+      "views": 450,
+      "saves": 280,
+      "ratedCount": 230,
+      "labels": ["Генерація музики", "Штучний інтелект", "Музика"],
+      "comments": [
+        {
+          "userId": 4,
+          "rated": 5,
+          "comment": "Неймовірний інструмент для створення музики."
+        },
+        {
+          "userId": 2,
+          "rated": 4,
+          "comment": "Дуже задоволений результатами."
+        },
+        {
+          "userId": 1,
+          "rated": 5,
+          "comment": "Чудова якість музики, дуже рекомендую!"
+        },
+        {
+          "userId": 2,
+          "rated": 4,
+          "comment": "Добре працює, але іноді потребує корекцій."
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "DeepL",
+      "url": "https://deepl.com",
+      "subtitle": "Перекладач з використанням ШІ",
+      "description": "Сервіс для перекладу текстів з використанням штучного інтелекту.",
+      "createdAt": "2024-06-17T17:00:36Z",
+      "updatedAt": "2024-06-17T17:00:36Z",
+      "imageId": 17,
+      "imageName": "deepl.png",
+      "rating": 5,
+      "views": 1000,
+      "saves": 550,
+      "ratedCount": 500,
+      "labels": ["Переклад", "Штучний інтелект", "Мовні технології"],
+      "comments": [
+        {
+          "userId": 6,
+          "rated": 5,
+          "comment": "Найкращий перекладач, який я використовував."
+        },
+        {
+          "userId": 2,
+          "rated": 4,
+          "comment": "Дуже точний переклад, але інколи помиляється."
+        },
+        {
+          "userId": 7,
+          "rated": 5,
+          "comment": "Чудовий сервіс для перекладу текстів!"
+        },
+        {
+          "userId": 4,
+          "rated": 5,
+          "comment": "Дуже задоволений якістю перекладів."
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Clara",
+      "url": "https://claralabs.com",
+      "subtitle": "Віртуальний асистент для планування зустрічей",
+      "description": "Сервіс для автоматичного планування зустрічей з використанням штучного інтелекту.",
+      "createdAt": "2024-06-17T17:00:36Z",
+      "updatedAt": "2024-06-17T17:00:36Z",
+      "imageId": 18,
+      "imageName": "clara.png",
+      "rating": 4,
+      "views": 400,
+      "saves": 200,
+      "ratedCount": 150,
+      "labels": ["Віртуальний асистент", "Штучний інтелект", "Планування"],
+      "comments": [
+        {
+          "userId": 5,
+          "rated": 4,
+          "comment": "Дуже зручно для планування зустрічей."
+        },
+        {
+          "userId": 2,
+          "rated": 5,
+          "comment": "Чудовий асистент, значно полегшує роботу."
+        },
+        {
+          "userId": 3,
+          "rated": 3,
+          "comment": "Інколи виникають помилки, але загалом добре."
+        },
+        {
+          "userId": 1,
+          "rated": 4,
+          "comment": "Добре працює, але є місце для покращень."
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Pictory",
+      "url": "https://pictory.ai",
+      "subtitle": "Автоматичне створення відео з тексту",
+      "description": "Сервіс для створення відео на основі текстових описів з використанням штучного інтелекту.",
+      "createdAt": "2024-06-17T17:00:36Z",
+      "updatedAt": "2024-06-17T17:00:36Z",
+      "imageId": 19,
+      "imageName": "pictory.png",
+      "rating": 5,
+      "views": 600,
+      "saves": 350,
+      "ratedCount": 300,
+      "labels": ["Генерація відео", "Штучний інтелект", "Текст до відео"],
+      "comments": [
+        {
+          "userId": 4,
+          "rated": 5,
+          "comment": "Дуже задоволений якістю відео!"
+        },
+        {
+          "userId": 3,
+          "rated": 4,
+          "comment": "Швидко генерує відео, але іноді потрібні корекції."
+        },
+        {
+          "userId": 2,
+          "rated": 5,
+          "comment": "Чудовий інструмент для створення контенту."
+        },
+        {
+          "userId": 1,
+          "rated": 5,
+          "comment": "Неймовірно зручно для створення відео."
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Remove.bg",
+      "url": "https://remove.bg",
+      "subtitle": "Автоматичне видалення фону з зображень",
+      "description": "Сервіс для автоматичного видалення фону з фотографій з використанням штучного інтелекту.",
+      "createdAt": "2024-06-17T17:00:36Z",
+      "updatedAt": "2024-06-17T17:00:36Z",
+      "imageId": 20,
+      "imageName": "removebg.png",
+      "rating": 5,
+      "views": 750,
+      "saves": 400,
+      "ratedCount": 350,
+      "labels": ["Редагування фото", "Штучний інтелект", "Видалення фону", "Робота з зображеннями"],
+      "comments": [
+        {
+          "userId": 1,
+          "rated": 3,
+          "comment": "Чудово видаляє фон, дуже зручно!"
+        },
+        {
+          "userId": 2,
+          "rated": 4,
+          "comment": "Добре працює, але не завжди ідеально."
+        },
+        {
+          "userId": 3,
+          "rated": 5,
+          "comment": "Відмінний сервіс, економить багато часу."
+        },
+        {
+          "userId": 4,
+          "rated": 5,
+          "comment": "Найкращий інструмент для видалення фону з фото."
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "nickname": "Віктор Петренко",
+      "email": "testmail1@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 2,
+      "nickname": "Ольга Ковальчук",
+      "email": "testmail2@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 3,
+      "nickname": "Іван Іваненко",
+      "email": "testmail3@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 4,
+      "nickname": "Марія Дорошенко",
+      "email": "testmail4@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 5,
+      "nickname": "Юлія Степанюк",
+      "email": "testmail5@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 6,
+      "nickname": "Олександр Шевченко",
+      "email": "testmail6@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 7,
+      "nickname": "Андрій Тарасенко",
+      "email": "testmail7@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 8,
+      "nickname": "Наталія Бондар",
+      "email": "testmail8@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 9,
+      "nickname": "Олег Сидоренко",
+      "email": "testmail9@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 10,
+      "nickname": "Світлана Левченко",
+      "email": "testmail10@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 11,
+      "nickname": "Ірина Мельник",
+      "email": "testmail11@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 12,
+      "nickname": "Володимир Кравець",
+      "email": "testmail12@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 13,
+      "nickname": "Лариса Петрівна",
+      "email": "testmail13@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 14,
+      "nickname": "Василь Лисенко",
+      "email": "testmail14@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 15,
+      "nickname": "Анна Пархоменко",
+      "email": "testmail15@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 16,
+      "nickname": "Дмитро Шаповал",
+      "email": "testmail16@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 17,
+      "nickname": "Ганна Миколаївна",
+      "email": "testmail17@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 18,
+      "nickname": "Максим Овчаренко",
+      "email": "testmail18@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 19,
+      "nickname": "Тетяна Гончар",
+      "email": "testmail19@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 20,
+      "nickname": "Олеся Жукова",
+      "email": "testmail20@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 21,
+      "nickname": "Богдан Карпенко",
+      "email": "testmail21@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 22,
+      "nickname": "Оксана Хоменко",
+      "email": "testmail22@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 23,
+      "nickname": "Михайло Васильченко",
+      "email": "testmail23@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 24,
+      "nickname": "Катерина Лозова",
+      "email": "testmail24@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 25,
+      "nickname": "Арсеній Петров",
+      "email": "testmail25@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 26,
+      "nickname": "Марина Бойко",
+      "email": "testmail26@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 27,
+      "nickname": "Ілля Руденко",
+      "email": "testmail27@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 28,
+      "nickname": "Зоя Пилипчук",
+      "email": "testmail28@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 29,
+      "nickname": "Тарас Вернигора",
+      "email": "testmail29@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 30,
+      "nickname": "Валентина Лісова",
+      "email": "testmail30@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 31,
+      "nickname": "Григорій Панько",
+      "email": "testmail31@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 32,
+      "nickname": "Олеся Поліщук",
+      "email": "testmail32@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 33,
+      "nickname": "Євген Дяченко",
+      "email": "testmail33@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 34,
+      "nickname": "Людмила Василенко",
+      "email": "testmail34@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 35,
+      "nickname": "Юрій Зінченко",
+      "email": "testmail35@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 36,
+      "nickname": "Сергій Костюк",
+      "email": "testmail36@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 37,
+      "nickname": "Микола Бойченко",
+      "email": "testmail37@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 38,
+      "nickname": "Галина Савченко",
+      "email": "testmail38@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 39,
+      "nickname": "Андрій Романов",
+      "email": "testmail39@gmail.com",
+      "password": "test"
+    },
+    {
+      "id": 40,
+      "nickname": "Людмила Діденко",
+      "email": "testmail40@gmail.com",
+      "password": "test"
+    }
+  ]
+}

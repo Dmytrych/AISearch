@@ -9,5 +9,6 @@ export const applicationCreateSchema = Joi.object({
         imageName: Joi.string().optional(),
         rating: Joi.number().positive().optional(),
         views: Joi.number().positive().optional(),
-        saves: Joi.number().positive().optional()
+        saves: Joi.number().positive().optional(),
+        ratedCount: Joi.number().positive().optional()
     });
