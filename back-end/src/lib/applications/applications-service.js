@@ -24,6 +24,8 @@ export function getApplicationClientModel(application, labels = []) {
 export async function findApplicationsWithLabels(filter = {}) {
     let applicationIdsFilter;
 
+    console.log(`Labels: ${JSON.stringify(filter)}`)
+
     if (filter.labels?.length) {
         const foundLabels = await filterLabelsByNames(filter.labels)
         applicationIdsFilter = foundLabels.map((label) => label.applicationId)
@@ -36,7 +38,7 @@ export async function findApplicationsWithLabels(filter = {}) {
     if (filter.name?.length) {
       const data = await findByName(filter.name)
       const applicationIds = data.map((document) => document.externalId)
-      applicationIdsFilter = applicationIdsFilter ? [...applicationIdsFilter, applicationIds] : applicationIds
+      applicationIdsFilter = applicationIdsFilter ? [...applicationIdsFilter, ...applicationIds] : applicationIds
     }
 
     const applications = await findAllApplications((query) => {
