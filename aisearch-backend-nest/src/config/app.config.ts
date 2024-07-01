@@ -46,7 +46,7 @@ export default registerAs<AppConfig>('app', () => {
 
   return {
     nodeEnv: process.env.NODE_ENV || 'development',
-    name: process.env.APP_NAME || 'app',
+    name: process.env.APP_NAME || 'application',
     workingDirectory: process.env.WORKING_DIRECTORY_PATH || process.cwd(),
     port: process.env.APP_PORT
       ? parseInt(process.env.APP_PORT, 10)

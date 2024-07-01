@@ -7,7 +7,9 @@ export class ToolItemController {
   }
 
   @Get()
-  getHello(): string {
-    return this.toolItemService.getHello();
+  async getHello(): Promise<string> {
+    console.log("tool-item")
+    await this.toolItemService.getHello();
+    return "OK";
   }
 }

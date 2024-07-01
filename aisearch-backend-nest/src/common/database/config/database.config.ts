@@ -29,12 +29,14 @@ class EnvironmentVariablesValidator {
 export default registerAs<DatabaseConfig>('database', () => {
   validateConfig(process.env, EnvironmentVariablesValidator)
 
+  console.log(process.env.DATABASE_HOST);
+
   return {
-    type: process.env.DATABASE_TYPE,
-    host: process.env.DATABASE_HOST,
-    port: process.env.DATABASE_PORT,
+    type: process.env.DATABASE_TYPE || 'postgres',
+    host: process.env.DATABASE_HOST || 'localhost',
+    port: Number.parseInt(process.env.DATABASE_PORT) || 5432,
     password: process.env.DATABASE_PASSWORD,
-    username: process.env.DATABASE_USERNAME,
+    username: process.env.DATABASE_USERNAME || "ai-search",
     dbName: process.env.DATABASE_NAME,
-  }
+  } as DatabaseConfig;
 })
